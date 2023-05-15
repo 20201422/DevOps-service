@@ -19,7 +19,7 @@ public interface UserMapper {
     @Select("select * from user")
     public List<User> findUsers();  // 查找所有用户
     
-    @Select("select * from user where username = #{userId}")
+    @Select("select * from user where userId = #{userId}")
     public User findUserById(String userId);    // 查找一个用户根据id
     
     @Insert("insert into user values(#{userId}, #{userName}, #{userPassword}, #{userType})")
