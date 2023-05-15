@@ -30,13 +30,13 @@ public class UserController {
     
     @GetMapping("/users")
     public ApiResult findAllUser() {    // 查找全部用户
-        System.out.println("查询全部");
+        System.out.println("查询全部用户");
         return ApiResultHandler.success(userService.findAll());
     }
     
     @GetMapping("/user/{userId}")
     public ApiResult findUserById(@PathVariable("userId") String userId) {  // 根据id查找用户
-        System.out.println("根据ID查找");
+        System.out.println("根据ID查找用户");
         return ApiResultHandler.success(userService.findUserById(userId));
     }
     
