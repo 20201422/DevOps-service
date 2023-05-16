@@ -56,6 +56,14 @@ public class EpicList {
             questions.remove(question);
         }
     }
+    
+    @Override
+    public String toString() {
+        return "EpicList{" +
+                "epic=" + epic +
+                ", questions=" + questions +
+                '}';
+    }
 }
 
 //    may the force be with you.

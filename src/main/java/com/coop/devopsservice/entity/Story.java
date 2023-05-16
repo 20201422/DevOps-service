@@ -41,6 +41,13 @@ public class Story {
         if (this.epics != null)
             this.epics.removeAll(epics);
     }
+    
+    @Override
+    public String toString() {
+        return "Story{" +
+                "epics=" + epics +
+                '}';
+    }
 }
 
 //    may the force be with you.

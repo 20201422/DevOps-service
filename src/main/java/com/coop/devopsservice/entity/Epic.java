@@ -76,6 +76,18 @@ public class Epic {
     public void setProjectId(String projectId) {
         this.projectId = projectId;
     }
+    
+    @Override
+    public String toString() {
+        return "Epic{" +
+                "epicId='" + epicId + '\'' +
+                ", epicName='" + epicName + '\'' +
+                ", epicDescribe='" + epicDescribe + '\'' +
+                ", epicPriority='" + epicPriority + '\'' +
+                ", epicState='" + epicState + '\'' +
+                ", projectId='" + projectId + '\'' +
+                '}';
+    }
 }
 
 //    may the force be with you.

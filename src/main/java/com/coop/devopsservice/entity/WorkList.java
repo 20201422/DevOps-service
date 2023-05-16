@@ -67,6 +67,15 @@ public class WorkList {
             sprintLists.remove(sprintList);
         }
     }
+    
+    @Override
+    public String toString() {
+        return "WorkList{" +
+                "sprintLists=" + sprintLists +
+                ", beginTime='" + beginTime + '\'' +
+                ", endTime='" + endTime + '\'' +
+                '}';
+    }
 }
 
 //    may the force be with you.

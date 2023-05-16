@@ -14,15 +14,17 @@ public class User {
     private String userName;
     private String userPassword;
     private String userType;
+    private String userImage;
     
     public User() {
     }
     
-    public User(String userId, String userName, String userPassword, String userType) {
+    public User(String userId, String userName, String userPassword, String userType, String userImage) {
         this.userId = userId;
         this.userName = userName;
         this.userPassword = userPassword;
         this.userType = userType;
+        this.userImage = userImage;
     }
     
     public String getUserId() {
@@ -55,6 +57,25 @@ public class User {
     
     public void setUserType(String userType) {
         this.userType = userType;
+    }
+    
+    public String getUserImage() {
+        return userImage;
+    }
+    
+    public void setUserImage(String userImage) {
+        this.userImage = userImage;
+    }
+    
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId='" + userId + '\'' +
+                ", userName='" + userName + '\'' +
+                ", userPassword='" + userPassword + '\'' +
+                ", userType='" + userType + '\'' +
+                ", userImage='" + userImage + '\'' +
+                '}';
     }
 }
 

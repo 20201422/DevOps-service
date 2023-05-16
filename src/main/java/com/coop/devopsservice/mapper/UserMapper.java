@@ -22,7 +22,7 @@ public interface UserMapper {
     @Select("select * from user where userId = #{userId}")
     public User findUserById(String userId);    // 查找一个用户根据id
     
-    @Insert("insert into user values(#{userId}, #{userName}, #{userPassword}, #{userType})")
+    @Insert("insert into user values(#{userId}, #{userName}, #{userPassword}, #{userType}, #{userImage})")
     public int addUser(User user);  // 添加一个用户
     
     @Delete("delete from user where id = #{userId}")
@@ -30,8 +30,9 @@ public interface UserMapper {
     
 //    @Options(useGeneratedKeys = true,keyProperty = "userId")    // 自动生成主键
     @Update("update user " +
-            "set userName = #{userName}, userPassword = #{userPassword}, userType = #{userType} " +
-            "where id = #{userId}")
+            "set userId = #{userId}, userName = #{userName}, userPassword = #{userPassword}," +
+            " userType = #{userType}, userImage = #{userImage} " +
+            "where userId = #{userId}")
     public int updateUser(User user);   // 更新用户信息
 
 }

@@ -46,6 +46,15 @@ public class ProjectAndUser {
     public void setUserId(String userId) {
         this.userId = userId;
     }
+    
+    @Override
+    public String toString() {
+        return "ProjectAndUser{" +
+                "projectAndUserId=" + projectAndUserId +
+                ", projectId='" + projectId + '\'' +
+                ", userId='" + userId + '\'' +
+                '}';
+    }
 }
 
 //    may the force be with you.

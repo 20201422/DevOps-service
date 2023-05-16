@@ -13,6 +13,7 @@ import com.coop.devopsservice.entity.User;
 import com.coop.devopsservice.serviceImpl.UserServiceImpl;
 import com.coop.devopsservice.util.ApiResultHandler;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -52,7 +53,7 @@ public class UserController {
     @PostMapping("/add")
     public ApiResult addUser(User user){    // 添加一个用户
         System.out.println("添加用户");
-//        user.setUserPassword(DigestUtils.md5DigestAsHex(user.getUserPassword().getBytes()));    // MD5加密
+        user.setUserPassword(DigestUtils.md5DigestAsHex(user.getUserPassword().getBytes()));    // MD5加密
         return ApiResultHandler.success(userService.addUser(user));
     }
     
@@ -65,6 +66,7 @@ public class UserController {
     @PutMapping("/update")
     public ApiResult updateUser(User user) {    // 更新一个用户
         System.out.println("更新用户");
+        user.setUserPassword(DigestUtils.md5DigestAsHex(user.getUserPassword().getBytes()));    // MD5加密
         return ApiResultHandler.success(userService.updateUser(user));
     }
 }

@@ -114,6 +114,21 @@ public class Question {
     public void setSprintId(String sprintId) {
         this.sprintId = sprintId;
     }
+    
+    @Override
+    public String toString() {
+        return "Question{" +
+                "questionId='" + questionId + '\'' +
+                ", questionName='" + questionName + '\'' +
+                ", questionDescribe='" + questionDescribe + '\'' +
+                ", questionPriority='" + questionPriority + '\'' +
+                ", questionState='" + questionState + '\'' +
+                ", projectId='" + projectId + '\'' +
+                ", userId='" + userId + '\'' +
+                ", epicId='" + epicId + '\'' +
+                ", sprintId='" + sprintId + '\'' +
+                '}';
+    }
 }
 
 //    may the force be with you.

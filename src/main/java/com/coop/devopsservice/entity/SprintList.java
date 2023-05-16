@@ -56,6 +56,14 @@ public class SprintList {
             questions.remove(question);
         }
     }
+    
+    @Override
+    public String toString() {
+        return "SprintList{" +
+                "sprint=" + sprint +
+                ", questions=" + questions +
+                '}';
+    }
 }
 
 //    may the force be with you.

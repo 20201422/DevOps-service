@@ -66,6 +66,17 @@ public class Sprint {
     public void setProjectId(String projectId) {
         this.projectId = projectId;
     }
+    
+    @Override
+    public String toString() {
+        return "Sprint{" +
+                "sprintId='" + sprintId + '\'' +
+                ", sprintName='" + sprintName + '\'' +
+                ", sprintDescribe='" + sprintDescribe + '\'' +
+                ", sprintState='" + sprintState + '\'' +
+                ", projectId='" + projectId + '\'' +
+                '}';
+    }
 }
 
 //    may the force be with you.

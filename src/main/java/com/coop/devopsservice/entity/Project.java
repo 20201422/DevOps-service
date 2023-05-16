@@ -77,6 +77,16 @@ public class Project {
         if (users != null)
             users.remove(user);
     }
+    
+    @Override
+    public String toString() {
+        return "Project{" +
+                "projectId='" + projectId + '\'' +
+                ", projectName='" + projectName + '\'' +
+                ", projectDescribe='" + projectDescribe + '\'' +
+                ", users=" + users +
+                '}';
+    }
 }
 
 //    may the force be with you.

@@ -60,6 +60,7 @@ public class UserServiceImpl implements UserService {
     
     @Override
     public int updateUser(User user) {  // 更新一个用户
+        System.out.println(user.toString());
         return userMapper.updateUser(user);
     }
 }
