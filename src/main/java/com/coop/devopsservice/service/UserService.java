@@ -14,12 +14,11 @@ import java.util.List;
 
 public interface UserService {
 
-    public List<User> findAll();
-    public User findUserById(String userId);
-    public int addUser(User user);
-    public int deleteById(String userId);
-    public int updateUser(User user);
-
+    List<User> findAll();
+    User findUserById(String userId);
+    int addUser(User user);
+    int deleteById(String userId);
+    int updateUser(User user);
 }
 
 //    may the force be with you.
