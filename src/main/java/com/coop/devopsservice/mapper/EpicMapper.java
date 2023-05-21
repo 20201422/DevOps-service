@@ -8,9 +8,31 @@
 
 package com.coop.devopsservice.mapper;
 
+import com.coop.devopsservice.entity.Epic;
+import org.apache.ibatis.annotations.*;
+
+import java.util.List;
+
+@Mapper
 public interface EpicMapper {
-
-
+    
+    @Select("select * from epic")
+    List<Epic> findEpics();   // 查找所有史诗
+    
+    @Select("select * from epic where epicId = #{epicId}")
+    Epic findEpicById(String epicId);   // 查找一个史诗根据id
+    
+    @Insert("insert into epic values(#{epicId}, #{epicName}, #{epicDescribe}, #{epicPriority}, #{epicState}, #{projectId}")
+    int addEpic(Epic epic);     // 增加一个史诗
+    
+    @Delete("delete from epic where epicId = #{epicId}")
+    int deleteEpicById(String epicId);  // 删除一个史诗
+    
+    @Update("update epic " +
+            "set epicId = #{epicId}, epicName = #{epicName}, epicDescribe = #{epicDescribe}, " +
+            "epicPriority = #{epicPriority}, epicState = #{epicState}, projectId = #{projectId} " +
+            "where epicId = #{epicId}")
+    int updateEpic(Epic epic);  // 更新历史信息
 
 }
 

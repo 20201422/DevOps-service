@@ -8,9 +8,17 @@
 
 package com.coop.devopsservice.service;
 
+import com.coop.devopsservice.entity.Project;
+
+import java.util.List;
+
 public interface ProjectService {
 
-
+    List<Project> findProjects();
+    Project findProjectById(String projectId);
+    int addProject(Project project);
+    int deleteProjectById(String projectId);
+    int updateProject(Project project);
 
 }
 

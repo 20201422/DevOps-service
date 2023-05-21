@@ -20,12 +20,12 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
     
-    @Autowired
     private UserMapper userMapper;
     
     public UserServiceImpl() {
     }
     
+    @Autowired
     public UserServiceImpl(UserMapper userMapper) {
         this.userMapper = userMapper;
     }
@@ -39,7 +39,7 @@ public class UserServiceImpl implements UserService {
     }
     
     @Override
-    public List<User> findAll() {   // 查找所有用户
+    public List<User> findUsers() {   // 查找所有用户
         return userMapper.findUsers();
     }
     

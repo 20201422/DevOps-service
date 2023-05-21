@@ -17,23 +17,23 @@ import java.util.List;
 public interface UserMapper {
 
     @Select("select * from user")
-    public List<User> findUsers();  // 查找所有用户
+    List<User> findUsers();  // 查找所有用户
     
     @Select("select * from user where userId = #{userId}")
-    public User findUserById(String userId);    // 查找一个用户根据id
+    User findUserById(String userId);    // 查找一个用户根据id
     
     @Insert("insert into user values(#{userId}, #{userName}, #{userPassword}, #{userType}, #{userImage})")
-    public int addUser(User user);  // 添加一个用户
+    int addUser(User user);  // 添加一个用户
     
     @Delete("delete from user where id = #{userId}")
-    public int deleteUserById(String userId);   // 删除一个用户
+    int deleteUserById(String userId);   // 删除一个用户
     
 //    @Options(useGeneratedKeys = true,keyProperty = "userId")    // 自动生成主键
     @Update("update user " +
             "set userId = #{userId}, userName = #{userName}, userPassword = #{userPassword}," +
             " userType = #{userType}, userImage = #{userImage} " +
             "where userId = #{userId}")
-    public int updateUser(User user);   // 更新用户信息
+    int updateUser(User user);   // 更新用户信息
 
 }
 

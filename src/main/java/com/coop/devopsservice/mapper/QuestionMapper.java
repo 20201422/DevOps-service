@@ -8,9 +8,34 @@
 
 package com.coop.devopsservice.mapper;
 
+import com.coop.devopsservice.entity.Question;
+import org.apache.ibatis.annotations.*;
+
+import java.util.List;
+
+@Mapper
 public interface QuestionMapper {
+    
+    @Select("select * from question")
+    List<Question> findQuestions(); // 查找所有问题
 
-
+    @Select("select * from question where questionId = #{questionId}")
+    Question findQuestionById(String questionId);   // 查找某一个问题根据id
+    
+    @Insert("insert into question " +
+            "values(#{questionId}, #{questionName}, #{questionDescribe}, #{questionPriority}, #{questionState}, " +
+            "#{projectId}, #{userId}, #{epicId}, #{sprintId})")
+    int addQuestion(Question question); // 增加一个问题
+    
+    @Delete("delete from question where id = #{questionId}")
+    int deleteQuestionById(String questionId);  // 删除一个问题
+    
+    @Update("update question " +
+            "set questionId = #{questionId}, questionName = #{questionName}, questionDescribe = #{questionDescribe}, " +
+            "questionPriority = #{questionPriority}, questionState = #{questionState}, projectId = #{projectId}, " +
+            "userId = #{userId}, epicId = #{epicId}, sprintId = #{sprintId} " +
+            "where questionId = #{questionId}")
+    int updateQuestion(Question question);  // 更新问题信息
 
 }
 

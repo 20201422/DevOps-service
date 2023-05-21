@@ -8,9 +8,17 @@
 
 package com.coop.devopsservice.service;
 
+import com.coop.devopsservice.entity.Epic;
+
+import java.util.List;
+
 public interface EpicService {
 
-
+    List<Epic> findEpics();
+    Epic findEpicById(String epicId);
+    int addEpic(Epic epic);
+    int deleteEpicById(String epicId);
+    int updateEpic(Epic epic);
 
 }
 

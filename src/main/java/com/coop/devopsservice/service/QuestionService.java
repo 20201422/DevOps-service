@@ -8,9 +8,17 @@
 
 package com.coop.devopsservice.service;
 
+import com.coop.devopsservice.entity.Question;
+
+import java.util.List;
+
 public interface QuestionService {
-
-
+    
+    List<Question> findQuestions();
+    Question findQuestionById(String questionId);
+    int addQuestion(Question question);
+    int deleteQuestionById(String questionId);
+    int updateQuestion(Question question);
 
 }
 

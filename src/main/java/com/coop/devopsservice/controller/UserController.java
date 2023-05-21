@@ -39,9 +39,9 @@ public class UserController {
     }
     
     @GetMapping("/users")
-    public ApiResult findAllUser() {    // 查找全部用户
+    public ApiResult findUsers() {    // 查找全部用户
         System.out.println("查询全部用户");
-        return ApiResultHandler.success(userService.findAll());
+        return ApiResultHandler.success(userService.findUsers());
     }
     
     @GetMapping("/{userId}")
@@ -64,7 +64,7 @@ public class UserController {
     }
     
     @PutMapping("/update")
-    public ApiResult updateUser(User user) {    // 更新一个用户
+    public ApiResult updateUser(User user) {    // 更新用户
         System.out.println("更新用户");
         user.setUserPassword(DigestUtils.md5DigestAsHex(user.getUserPassword().getBytes()));    // MD5加密
         return ApiResultHandler.success(userService.updateUser(user));
