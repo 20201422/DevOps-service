@@ -8,7 +8,7 @@
 
 package com.coop.devopsservice.serviceImpl;
 
-import com.coop.devopsservice.entity.Question;
+import com.coop.devopsservice.entity.questionEntity.Question;
 import com.coop.devopsservice.mapper.QuestionMapper;
 import com.coop.devopsservice.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -6,7 +6,7 @@
  * freedom is the oxygen of the soul.
  **/
 
-package com.coop.devopsservice.entity;
+package com.coop.devopsservice.entity.questionEntity;
 
 public class Question {
     
@@ -15,6 +15,8 @@ public class Question {
     private String questionDescribe;
     private String questionPriority;
     private String questionState;
+    private String beginTime;
+    private String endTime;
     private String projectId;
     private String userId;
     private String epicId;
@@ -23,20 +25,27 @@ public class Question {
     public Question() {
     }
     
-    public Question(String questionId, String questionName, String questionDescribe, String questionPriority, String questionState) {
+    public Question(String questionId, String questionName, String questionDescribe, String questionPriority,
+                    String questionState, String beginTime, String endTime) {
         this.questionId = questionId;
         this.questionName = questionName;
         this.questionDescribe = questionDescribe;
         this.questionPriority = questionPriority;
         this.questionState = questionState;
+        this.beginTime = beginTime;
+        this.endTime = endTime;
     }
     
-    public Question(String questionId, String questionName, String questionDescribe, String questionPriority, String questionState, String projectId, String userId, String epicId, String iterationId) {
+    public Question(String questionId, String questionName, String questionDescribe, String questionPriority,
+                    String questionState, String beginTime, String endTime,
+                    String projectId, String userId, String epicId, String iterationId) {
         this.questionId = questionId;
         this.questionName = questionName;
         this.questionDescribe = questionDescribe;
         this.questionPriority = questionPriority;
         this.questionState = questionState;
+        this.beginTime = beginTime;
+        this.endTime = endTime;
         this.projectId = projectId;
         this.userId = userId;
         this.epicId = epicId;
@@ -81,6 +90,22 @@ public class Question {
     
     public void setQuestionState(String questionState) {
         this.questionState = questionState;
+    }
+    
+    public String getBeginTime() {
+        return beginTime;
+    }
+    
+    public void setBeginTime(String beginTime) {
+        this.beginTime = beginTime;
+    }
+    
+    public String getEndTime() {
+        return endTime;
+    }
+    
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
     }
     
     public String getProjectId() {

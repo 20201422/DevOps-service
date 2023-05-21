@@ -8,8 +8,8 @@
 
 package com.coop.devopsservice.serviceImpl;
 
-import com.baomidou.mybatisplus.core.toolkit.ObjectUtils;
-import com.coop.devopsservice.entity.User;
+import com.coop.devopsservice.entity.userEntity.UserIdAndUserName;
+import com.coop.devopsservice.entity.userEntity.User;
 import com.coop.devopsservice.mapper.UserMapper;
 import com.coop.devopsservice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +41,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> findUsers() {   // 查找所有用户
         return userMapper.findUsers();
+    }
+    
+    @Override
+    public List<UserIdAndUserName> findUsersOnlyIdAndName() {    // 查找用户的id和名字
+        return userMapper.findUsersOnlyIdAndName();
     }
     
     @Override

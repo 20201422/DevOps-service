@@ -6,10 +6,10 @@
  * freedom is the oxygen of the soul.
  **/
 
-package com.coop.devopsservice.controller;
+package com.coop.devopsservice.controller.questionController;
 
 import com.coop.devopsservice.entity.ApiResult;
-import com.coop.devopsservice.entity.Question;
+import com.coop.devopsservice.entity.questionEntity.Question;
 import com.coop.devopsservice.serviceImpl.QuestionServiceImpl;
 import com.coop.devopsservice.util.ApiResultHandler;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +23,7 @@ public class QuestionController {
     
     public QuestionController() {
     }
+    
     @Autowired
     public QuestionController(QuestionServiceImpl questionService) {
         this.questionService = questionService;

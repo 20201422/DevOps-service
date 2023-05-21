@@ -6,7 +6,9 @@
  * freedom is the oxygen of the soul.
  **/
 
-package com.coop.devopsservice.entity;
+package com.coop.devopsservice.entity.projectEntity;
+
+import com.coop.devopsservice.entity.userEntity.User;
 
 import java.util.ArrayList;
 import java.util.List;

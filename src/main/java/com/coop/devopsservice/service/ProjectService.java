@@ -8,7 +8,7 @@
 
 package com.coop.devopsservice.service;
 
-import com.coop.devopsservice.entity.Project;
+import com.coop.devopsservice.entity.projectEntity.Project;
 
 import java.util.List;
 

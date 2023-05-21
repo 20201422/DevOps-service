@@ -1,6 +1,6 @@
 package com.coop.devopsservice.mapper;
 
-import com.coop.devopsservice.entity.Iteration;
+import com.coop.devopsservice.entity.iterationEntity.Iteration;
 import org.apache.ibatis.annotations.*;
 import java.util.List;
 

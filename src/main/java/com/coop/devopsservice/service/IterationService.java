@@ -1,6 +1,6 @@
 package com.coop.devopsservice.service;
 
-import com.coop.devopsservice.entity.Iteration;
+import com.coop.devopsservice.entity.iterationEntity.Iteration;
 
 import java.util.List;
 

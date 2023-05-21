@@ -6,10 +6,10 @@
  * freedom is the oxygen of the soul.
  **/
 
-package com.coop.devopsservice.controller;
+package com.coop.devopsservice.controller.userController;
 
 import com.coop.devopsservice.entity.ApiResult;
-import com.coop.devopsservice.entity.User;
+import com.coop.devopsservice.entity.userEntity.User;
 import com.coop.devopsservice.serviceImpl.UserServiceImpl;
 import com.coop.devopsservice.util.ApiResultHandler;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +42,12 @@ public class UserController {
     public ApiResult findUsers() {    // 查找全部用户
         System.out.println("查询全部用户");
         return ApiResultHandler.success(userService.findUsers());
+    }
+    
+    @GetMapping("/users/idAndName")
+    public ApiResult findUsersOnlyIdAndName() { // 查找用户的id和名字
+        System.out.println("查询用户的id和名字");
+        return ApiResultHandler.success(userService.findUsersOnlyIdAndName());
     }
     
     @GetMapping("/{userId}")

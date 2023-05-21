@@ -6,16 +6,15 @@
  * freedom is the oxygen of the soul.
  **/
 
-package com.coop.devopsservice.controller;
+package com.coop.devopsservice.controller.userController;
 
 import com.baomidou.mybatisplus.core.toolkit.ObjectUtils;
 import com.coop.devopsservice.entity.ApiResult;
-import com.coop.devopsservice.entity.User;
+import com.coop.devopsservice.entity.userEntity.User;
 import com.coop.devopsservice.serviceImpl.UserServiceImpl;
 import com.coop.devopsservice.util.ApiResultHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.DigestUtils;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;

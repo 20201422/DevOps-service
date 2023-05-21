@@ -1,4 +1,4 @@
-package com.coop.devopsservice.entity;
+package com.coop.devopsservice.entity.iterationEntity;
 
 import java.util.Date;
 

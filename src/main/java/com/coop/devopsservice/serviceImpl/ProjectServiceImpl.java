@@ -8,7 +8,7 @@
 
 package com.coop.devopsservice.serviceImpl;
 
-import com.coop.devopsservice.entity.Project;
+import com.coop.devopsservice.entity.projectEntity.Project;
 import com.coop.devopsservice.mapper.ProjectMapper;
 import com.coop.devopsservice.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;

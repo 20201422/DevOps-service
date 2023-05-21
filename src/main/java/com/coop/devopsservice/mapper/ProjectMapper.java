@@ -8,7 +8,7 @@
 
 package com.coop.devopsservice.mapper;
 
-import com.coop.devopsservice.entity.Project;
+import com.coop.devopsservice.entity.projectEntity.Project;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;

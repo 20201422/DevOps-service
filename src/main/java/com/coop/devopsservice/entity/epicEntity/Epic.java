@@ -6,7 +6,7 @@
  * freedom is the oxygen of the soul.
  **/
 
-package com.coop.devopsservice.entity;
+package com.coop.devopsservice.entity.epicEntity;
 
 public class Epic {
     

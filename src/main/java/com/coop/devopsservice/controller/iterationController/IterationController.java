@@ -1,7 +1,7 @@
-package com.coop.devopsservice.controller;
+package com.coop.devopsservice.controller.iterationController;
 
 import com.coop.devopsservice.entity.ApiResult;
-import com.coop.devopsservice.entity.Iteration;
+import com.coop.devopsservice.entity.iterationEntity.Iteration;
 import com.coop.devopsservice.serviceImpl.IterationServiceImpl;
 import com.coop.devopsservice.util.ApiResultHandler;
 import org.springframework.web.bind.annotation.*;
@@ -10,14 +10,13 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/iteration")
 public class IterationController {
     private IterationServiceImpl iterationService;
-
+    public IterationController() {
+    }
+    
     public IterationController(IterationServiceImpl iterationService) {
         this.iterationService = iterationService;
     }
-
-    public IterationController() {
-    }
-
+    
     @GetMapping("/iterations")
     public ApiResult findIterations() {    // 查找全部迭代
         System.out.println("查询全部迭代");

@@ -8,7 +8,7 @@
 
 package com.coop.devopsservice.service;
 
-import com.coop.devopsservice.entity.Question;
+import com.coop.devopsservice.entity.questionEntity.Question;
 
 import java.util.List;
 

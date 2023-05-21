@@ -6,7 +6,7 @@
  * freedom is the oxygen of the soul.
  **/
 
-package com.coop.devopsservice.entity;
+package com.coop.devopsservice.entity.userEntity;
 
 public class User {
     
@@ -17,6 +17,11 @@ public class User {
     private String userImage;
     
     public User() {
+    }
+    
+    public User(String userId, String userName) {
+        this.userId = userId;
+        this.userName = userName;
     }
     
     public User(String userId, String userName, String userPassword, String userType, String userImage) {

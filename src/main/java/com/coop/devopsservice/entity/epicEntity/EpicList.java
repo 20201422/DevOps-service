@@ -1,39 +1,41 @@
 /**
- * @ClassName SprintList
+ * @ClassName EpicList
  * @Author 24
  * @Date 2023/4/20 20:31
  * @Version 1.0.0
  * freedom is the oxygen of the soul.
  **/
 
-package com.coop.devopsservice.entity;
+package com.coop.devopsservice.entity.epicEntity;
+
+import com.coop.devopsservice.entity.questionEntity.Question;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SprintList {
-    
-    private Sprint sprint;
+public class EpicList {
+
+    private Epic epic;
     private List<Question> questions;
     
-    public SprintList() {
+    public EpicList() {
     }
     
-    public SprintList(Sprint sprint) {
-        this.sprint = sprint;
+    public EpicList(Epic epic) {
+        this.epic = epic;
     }
     
-    public SprintList(Sprint sprint, List<Question> questions) {
-        this.sprint = sprint;
+    public EpicList(Epic epic, List<Question> questions) {
+        this.epic = epic;
         this.questions = questions;
     }
     
-    public Sprint getSprint() {
-        return sprint;
+    public Epic getEpic() {
+        return epic;
     }
     
-    public void setSprint(Sprint sprint) {
-        this.sprint = sprint;
+    public void setEpic(Epic epic) {
+        this.epic = epic;
     }
     
     public List<Question> getQuestions() {
@@ -44,14 +46,14 @@ public class SprintList {
         this.questions = questions;
     }
     
-    public List<Question> addQuestion(Question question) {   // 添加问题
+    public List<Question> addQuestion(Question question) {  // 添加问题
         if (questions == null)
             questions = new ArrayList<>();
         questions.add(question);
         return questions;
     }
     
-    public void removeQuestion(Question question) {  // 移除问题
+    public void removeQuestion(Question question) { // 移除问题
         if (questions != null) {
             questions.remove(question);
         }
@@ -59,8 +61,8 @@ public class SprintList {
     
     @Override
     public String toString() {
-        return "SprintList{" +
-                "sprint=" + sprint +
+        return "EpicList{" +
+                "epic=" + epic +
                 ", questions=" + questions +
                 '}';
     }

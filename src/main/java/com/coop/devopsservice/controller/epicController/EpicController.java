@@ -6,12 +6,13 @@
  * freedom is the oxygen of the soul.
  **/
 
-package com.coop.devopsservice.controller;
+package com.coop.devopsservice.controller.epicController;
 
 import com.coop.devopsservice.entity.ApiResult;
-import com.coop.devopsservice.entity.Epic;
+import com.coop.devopsservice.entity.epicEntity.Epic;
 import com.coop.devopsservice.serviceImpl.EpicServiceImpl;
 import com.coop.devopsservice.util.ApiResultHandler;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -23,6 +24,7 @@ public class EpicController {
     public EpicController() {
     }
     
+    @Autowired
     public EpicController(EpicServiceImpl epicService) {
         this.epicService = epicService;
     }
@@ -39,6 +41,12 @@ public class EpicController {
     public ApiResult findEpics() {    // 查找全部史诗
         System.out.println("查询全部史诗");
         return ApiResultHandler.success(epicService.findEpics());
+    }
+    
+    @GetMapping("/epics/idAndName")
+    public ApiResult findEpicsOnlyIdAndName() { // 查找史诗的id和名字
+        System.out.println("查询史诗的id和名字");
+        return ApiResultHandler.success(epicService.findEpicsOnlyIdAndName());
     }
     
     @GetMapping("/{questionId}")

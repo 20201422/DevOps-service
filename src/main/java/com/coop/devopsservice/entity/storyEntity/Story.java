@@ -6,7 +6,9 @@
  * freedom is the oxygen of the soul.
  **/
 
-package com.coop.devopsservice.entity;
+package com.coop.devopsservice.entity.storyEntity;
+
+import com.coop.devopsservice.entity.epicEntity.EpicList;
 
 import java.util.ArrayList;
 import java.util.List;

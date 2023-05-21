@@ -8,7 +8,8 @@
 
 package com.coop.devopsservice.serviceImpl;
 
-import com.coop.devopsservice.entity.Epic;
+import com.coop.devopsservice.entity.epicEntity.Epic;
+import com.coop.devopsservice.entity.epicEntity.EpicIdAndEpicName;
 import com.coop.devopsservice.mapper.EpicMapper;
 import com.coop.devopsservice.service.EpicService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,11 @@ public class EpicServiceImpl implements EpicService {
     @Override
     public List<Epic> findEpics() { // 查找所有史诗
         return epicMapper.findEpics();
+    }
+    
+    @Override
+    public List<EpicIdAndEpicName> findEpicsOnlyIdAndName() {   // 查找史诗的id和名字
+        return epicMapper.findEpicsOnlyIdAndName();
     }
     
     @Override

@@ -6,7 +6,7 @@
  * freedom is the oxygen of the soul.
  **/
 
-package com.coop.devopsservice.entity.State.QuestionState;
+package com.coop.devopsservice.controller.questionController.questionState;
 
 public class QuestionState {
 }

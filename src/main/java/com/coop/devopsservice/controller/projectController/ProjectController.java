@@ -6,13 +6,14 @@
  * freedom is the oxygen of the soul.
  **/
 
-package com.coop.devopsservice.controller;
+package com.coop.devopsservice.controller.projectController;
 
 
 import com.coop.devopsservice.entity.ApiResult;
-import com.coop.devopsservice.entity.Project;
+import com.coop.devopsservice.entity.projectEntity.Project;
 import com.coop.devopsservice.serviceImpl.ProjectServiceImpl;
 import com.coop.devopsservice.util.ApiResultHandler;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -24,6 +25,7 @@ public class ProjectController {
     public ProjectController() {
     }
     
+    @Autowired
     public ProjectController(ProjectServiceImpl projectService) {
         this.projectService = projectService;
     }
