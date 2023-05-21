@@ -8,7 +8,7 @@
 
 package com.coop.devopsservice.mapper;
 
-import com.coop.devopsservice.entity.Question;
+import com.coop.devopsservice.entity.questionEntity.Question;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -24,7 +24,7 @@ public interface QuestionMapper {
     
     @Insert("insert into question " +
             "values(#{questionId}, #{questionName}, #{questionDescribe}, #{questionPriority}, #{questionState}, " +
-            "#{projectId}, #{userId}, #{epicId}, #{sprintId})")
+            "#{beginTime}, #{endTime}, #{projectId}, #{userId}, #{epicId}, #{sprintId})")
     int addQuestion(Question question); // 增加一个问题
     
     @Delete("delete from question where id = #{questionId}")
@@ -32,9 +32,9 @@ public interface QuestionMapper {
     
     @Update("update question " +
             "set questionId = #{questionId}, questionName = #{questionName}, questionDescribe = #{questionDescribe}, " +
-            "questionPriority = #{questionPriority}, questionState = #{questionState}, projectId = #{projectId}, " +
-            "userId = #{userId}, epicId = #{epicId}, sprintId = #{sprintId} " +
-            "where questionId = #{questionId}")
+            "questionPriority = #{questionPriority}, questionState = #{questionState}, " +
+            "beginTime = #{beginTime}, endTime = #{endTime} projectId = #{projectId}, userId = #{userId}, " +
+            "epicId = #{epicId}, sprintId = #{sprintId} where questionId = #{questionId}")
     int updateQuestion(Question question);  // 更新问题信息
 
 }

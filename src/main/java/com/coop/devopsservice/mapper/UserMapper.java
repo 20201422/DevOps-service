@@ -8,7 +8,8 @@
 
 package com.coop.devopsservice.mapper;
 
-import com.coop.devopsservice.entity.User;
+import com.coop.devopsservice.entity.userEntity.UserIdAndUserName;
+import com.coop.devopsservice.entity.userEntity.User;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -18,6 +19,9 @@ public interface UserMapper {
 
     @Select("select * from user")
     List<User> findUsers();  // 查找所有用户
+    
+    @Select("select userId, userName from user")
+    List<UserIdAndUserName> findUsersOnlyIdAndName();    // 查找用户的id和名字
     
     @Select("select * from user where userId = #{userId}")
     User findUserById(String userId);    // 查找一个用户根据id

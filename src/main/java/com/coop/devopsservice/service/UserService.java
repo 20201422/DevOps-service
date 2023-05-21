@@ -8,13 +8,15 @@
 
 package com.coop.devopsservice.service;
 
-import com.coop.devopsservice.entity.User;
+import com.coop.devopsservice.entity.userEntity.UserIdAndUserName;
+import com.coop.devopsservice.entity.userEntity.User;
 
 import java.util.List;
 
 public interface UserService {
 
     List<User> findUsers();
+    List<UserIdAndUserName> findUsersOnlyIdAndName();
     User findUserById(String userId);
     int addUser(User user);
     int deleteById(String userId);

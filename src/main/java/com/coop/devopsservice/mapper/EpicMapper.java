@@ -8,7 +8,8 @@
 
 package com.coop.devopsservice.mapper;
 
-import com.coop.devopsservice.entity.Epic;
+import com.coop.devopsservice.entity.epicEntity.Epic;
+import com.coop.devopsservice.entity.epicEntity.EpicIdAndEpicName;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -18,6 +19,9 @@ public interface EpicMapper {
     
     @Select("select * from epic")
     List<Epic> findEpics();   // 查找所有史诗
+    
+    @Select("select epicId, epicName from epic")
+    List<EpicIdAndEpicName> findEpicsOnlyIdAndName();   // 查找史诗的id和名字
     
     @Select("select * from epic where epicId = #{epicId}")
     Epic findEpicById(String epicId);   // 查找一个史诗根据id
