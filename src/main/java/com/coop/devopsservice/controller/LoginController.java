@@ -23,7 +23,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Objects;
 
 @RestController
-@CrossOrigin
 public class LoginController {
     
     private UserServiceImpl userService;

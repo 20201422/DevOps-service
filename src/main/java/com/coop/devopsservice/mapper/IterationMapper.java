@@ -10,18 +10,18 @@ public interface IterationMapper {
     public List<Iteration> findIterations();   //查询所有迭代
 
     @Select("select * from iteration where iterationId = #{iterationId}")
-    public Iteration findIterationById(int iterationId);   //根据id查询迭代
+    Iteration findIterationById(int iterationId);   //根据id查询迭代
 
     @Insert("insert into iteration values(#{iterationId},#{iterationName},#{iterationDescribe}," +
             "#{iterationState},#{startTime},#{endTime},#{projectId})")
-    public void addIteration(Iteration iteration);
+    int addIteration(Iteration iteration);
 
     @Delete("delete from iteration where iterationId = #{iterationId}")
-    public void deleteIterationById(int iterationId);  //根据id删除迭代
+    int deleteIterationById(int iterationId);  //根据id删除迭代
 
     @Update("update iteration" +
             "set iterationId = #{iterationId},iterationName = #{iterationName}," +
                 "iterationDescribe = #{iterationDescribe},iterationState = #{iterationState}," +
                 "startTime = #{startTime},endTime = #{endTime},projectId = #{projectId}")
-    public void updateIteration(Iteration iteration);   //更新迭代
+    int updateIteration(Iteration iteration);   //更新迭代
 }

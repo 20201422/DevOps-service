@@ -7,7 +7,7 @@ import java.util.List;
 public interface IterationService {
     public List<Iteration> findIterations();
     public Iteration findIterationById(int IterationId);
-    public void addIteration(Iteration iteration);
-    public void deleteIterationById(int IterationId);
-    public void updateIteration(Iteration iteration);
+    public int addIteration(Iteration iteration);
+    public int deleteIterationById(int IterationId);
+    public int updateIteration(Iteration iteration);
 }

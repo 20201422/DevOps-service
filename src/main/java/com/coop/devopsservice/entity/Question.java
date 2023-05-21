@@ -18,7 +18,7 @@ public class Question {
     private String projectId;
     private String userId;
     private String epicId;
-    private String sprintId;
+    private String iterationId;
     
     public Question() {
     }
@@ -31,7 +31,7 @@ public class Question {
         this.questionState = questionState;
     }
     
-    public Question(String questionId, String questionName, String questionDescribe, String questionPriority, String questionState, String projectId, String userId, String epicId, String sprintId) {
+    public Question(String questionId, String questionName, String questionDescribe, String questionPriority, String questionState, String projectId, String userId, String epicId, String iterationId) {
         this.questionId = questionId;
         this.questionName = questionName;
         this.questionDescribe = questionDescribe;
@@ -40,7 +40,7 @@ public class Question {
         this.projectId = projectId;
         this.userId = userId;
         this.epicId = epicId;
-        this.sprintId = sprintId;
+        this.iterationId = iterationId;
     }
     
     public String getQuestionId() {
@@ -107,12 +107,12 @@ public class Question {
         this.epicId = epicId;
     }
     
-    public String getSprintId() {
-        return sprintId;
+    public String getIterationId() {
+        return iterationId;
     }
     
-    public void setSprintId(String sprintId) {
-        this.sprintId = sprintId;
+    public void setIterationId(String iterationId) {
+        this.iterationId = iterationId;
     }
     
     @Override
@@ -126,7 +126,7 @@ public class Question {
                 ", projectId='" + projectId + '\'' +
                 ", userId='" + userId + '\'' +
                 ", epicId='" + epicId + '\'' +
-                ", sprintId='" + sprintId + '\'' +
+                ", iterationId='" + iterationId + '\'' +
                 '}';
     }
 }

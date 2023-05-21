@@ -26,18 +26,18 @@ public class IterationServiceImpl implements IterationService {
     }
 
     @Override
-    public void addIteration(Iteration iteration) {
-        iterationMapper.addIteration(iteration);
+    public int addIteration(Iteration iteration) {
+       return iterationMapper.addIteration(iteration);
     }
 
     @Override
-    public void deleteIterationById(int iterationId) {
-        iterationMapper.deleteIterationById(iterationId);
+    public int deleteIterationById(int iterationId) {
+        return iterationMapper.deleteIterationById(iterationId);
     }
 
     @Override
-    public void updateIteration(Iteration iteration) {
-        iterationMapper.updateIteration(iteration);
+    public int updateIteration(Iteration iteration) {
+        return iterationMapper.updateIteration(iteration);
     }
 
     public IterationMapper getIterationMapper() {

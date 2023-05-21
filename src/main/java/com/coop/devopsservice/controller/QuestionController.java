@@ -12,6 +12,7 @@ import com.coop.devopsservice.entity.ApiResult;
 import com.coop.devopsservice.entity.Question;
 import com.coop.devopsservice.serviceImpl.QuestionServiceImpl;
 import com.coop.devopsservice.util.ApiResultHandler;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -22,7 +23,7 @@ public class QuestionController {
     
     public QuestionController() {
     }
-    
+    @Autowired
     public QuestionController(QuestionServiceImpl questionService) {
         this.questionService = questionService;
     }
