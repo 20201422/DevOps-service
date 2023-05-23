@@ -26,7 +26,7 @@ public interface EpicMapper {
     @Select("select * from epic where epicId = #{epicId}")
     Epic findEpicById(String epicId);   // 查找一个史诗根据id
     
-    @Insert("insert into epic values(null, #{epicId}, #{epicName}, #{epicDescribe}, #{epicPriority}, #{epicState}, #{projectId}")
+    @Insert("insert into epic values(null, #{epicId}, #{epicName}, #{epicDescribe}, #{epicPriority}, #{epicState}, #{projectId})")
     int addEpic(Epic epic);     // 增加一个史诗
     
     @Delete("delete from epic where epicId = #{epicId}")

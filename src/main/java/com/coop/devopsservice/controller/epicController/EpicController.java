@@ -12,6 +12,7 @@ import com.coop.devopsservice.designPattern.statePattern.EpicState;
 import com.coop.devopsservice.entity.ApiResult;
 import com.coop.devopsservice.entity.epicEntity.Epic;
 import com.coop.devopsservice.serviceImpl.EpicServiceImpl;
+import com.coop.devopsservice.serviceImpl.QuestionServiceImpl;
 import com.coop.devopsservice.util.ApiResultHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -21,13 +22,15 @@ import org.springframework.web.bind.annotation.*;
 public class EpicController {
     
     private EpicServiceImpl epicService;
+    private QuestionServiceImpl questionService;
     
     public EpicController() {
     }
     
     @Autowired
-    public EpicController(EpicServiceImpl epicService) {
+    public EpicController(EpicServiceImpl epicService, QuestionServiceImpl questionService) {
         this.epicService = epicService;
+        this.questionService = questionService;
     }
     
     public EpicServiceImpl getEpicService() {
@@ -36,6 +39,14 @@ public class EpicController {
     
     public void setEpicService(EpicServiceImpl epicService) {
         this.epicService = epicService;
+    }
+    
+    public QuestionServiceImpl getQuestionService() {
+        return questionService;
+    }
+    
+    public void setQuestionService(QuestionServiceImpl questionService) {
+        this.questionService = questionService;
     }
     
     @GetMapping("/epics")
@@ -57,10 +68,9 @@ public class EpicController {
     }
     
     @PostMapping("/add")
-    public ApiResult addEpic(Epic epic) {    // 添加一个史诗
+    public ApiResult addEpic(@RequestBody Epic epic) {    // 添加一个史诗
         System.out.println("添加史诗");
-        
-        epic = new EpicState() {
+        epic = new EpicState(questionService) {
             @Override
             public String setQuestionState() {
                 return null;

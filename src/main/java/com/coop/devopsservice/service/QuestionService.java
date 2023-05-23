@@ -21,7 +21,7 @@ public interface QuestionService {
     int deleteQuestionById(String questionId);
     int updateQuestion(Question question);
     List<Question> findQuestionsByEpicId(String epicId);
-    List<Question> findQuestionByState(int iterationId,String state);
+    List<ShowQuestions> findQuestionByState(int iterationId,String state);
 
 }
 

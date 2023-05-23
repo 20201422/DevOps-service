@@ -50,6 +50,7 @@ public class QuestionServiceImpl implements QuestionService {
     
     @Override
     public int addQuestion(Question question) { // 增加一个问题
+        System.out.println(question);
         return questionMapper.addQuestion(question);
     }
     
@@ -69,7 +70,7 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     @Override
-    public List<Question> findQuestionByState(int iterationId,String state) {
+    public List<ShowQuestions> findQuestionByState(int iterationId,String state) {
         return questionMapper.findQuestionByState(iterationId,state);
     }
 

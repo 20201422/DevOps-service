@@ -9,9 +9,12 @@
 package com.coop.devopsservice.designPattern.statePattern;
 
 
+import com.coop.devopsservice.serviceImpl.QuestionServiceImpl;
+
 public class EpicCompletedState extends EpicState {
     
-    public EpicCompletedState() {
+    public EpicCompletedState(QuestionServiceImpl questionService) {
+        super(questionService);
     }
     
     @Override

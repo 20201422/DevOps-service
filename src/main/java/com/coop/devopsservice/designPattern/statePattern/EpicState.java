@@ -11,19 +11,29 @@ package com.coop.devopsservice.designPattern.statePattern;
 import com.coop.devopsservice.entity.epicEntity.Epic;
 import com.coop.devopsservice.entity.questionEntity.Question;
 import com.coop.devopsservice.serviceImpl.QuestionServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Objects;
 
+@Component
 public abstract class EpicState {
     
     public abstract String setQuestionState();
     
+    private final QuestionServiceImpl questionService;
+    
+    @Autowired
+    public EpicState(QuestionServiceImpl questionService) {
+        this.questionService = questionService;
+    }
+    
     public Epic stateCheck(Epic epic) {
-        List<Question> questions = new QuestionServiceImpl().findQuestionsByEpicId(epic.getEpicId());
+        List<Question> questions = questionService.findQuestionsByEpicId(epic.getEpicId());
         
         if (questions.size() == 0) {    // 该史诗下没有问题，那么状态就是“规划中”
-            epic.setEpicState(new EpicToBeCompletedState().setQuestionState());
+            epic.setEpicState(new EpicToBeCompletedState(questionService).setQuestionState());
             return epic;
         }
         
@@ -40,13 +50,13 @@ public abstract class EpicState {
         }
         
         if (toBeCompleted == questions.size()) {    // 都是规划中
-            epic.setEpicState(new EpicToBeCompletedState().setQuestionState()); // 史诗状态为“规划中”
+            epic.setEpicState(new EpicToBeCompletedState(questionService).setQuestionState()); // 史诗状态为“规划中”
         }
         if (completed == questions.size()) {    // 都是已实现
-            epic.setEpicState(new EpicCompletedState().setQuestionState()); // 史诗状态为“已实现”
+            epic.setEpicState(new EpicCompletedState(questionService).setQuestionState()); // 史诗状态为“已实现”
         }
         if (underway > 0) { // 存在实现中的问题
-            epic.setEpicState(new EpicUnderwayState().setQuestionState());  // 史诗状态为“实现中”
+            epic.setEpicState(new EpicUnderwayState(questionService).setQuestionState());  // 史诗状态为“实现中”
         }
         
         return epic;

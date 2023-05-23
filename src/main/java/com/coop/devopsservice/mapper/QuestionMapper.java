@@ -19,7 +19,7 @@ public interface QuestionMapper {
     
     @Select("select question.*, userName\n" +
             "from question\n" +
-            "left outer join user on question.userId = user.userId;\n")
+            "left outer join user on question.userId = user.userId;")
     List<ShowQuestions> findQuestions(); // 查找所有问题
 
     @Select("select * from question where questionId = #{questionId}")
@@ -27,7 +27,7 @@ public interface QuestionMapper {
     
     @Insert("insert into question " +
             "values(null, #{questionId}, #{questionName}, #{questionDescribe}, #{questionPriority}, #{questionState}, " +
-            "#{beginTime}, #{endTime}, #{projectId}, #{userId}, #{epicId}, #{sprintId})")
+            "#{beginTime}, #{endTime}, #{projectId}, #{userId}, #{epicId}, #{iterationId})")
     int addQuestion(Question question); // 增加一个问题
     
     @Delete("delete from question where id = #{questionId}")
@@ -37,13 +37,18 @@ public interface QuestionMapper {
             "set questionId = #{questionId}, questionName = #{questionName}, questionDescribe = #{questionDescribe}, " +
             "questionPriority = #{questionPriority}, questionState = #{questionState}, " +
             "beginTime = #{beginTime}, endTime = #{endTime} projectId = #{projectId}, userId = #{userId}, " +
-            "epicId = #{epicId}, sprintId = #{sprintId} where questionId = #{questionId}")
+            "epicId = #{epicId}, iterationId = #{iterationId} " +
+            "where questionId = #{questionId}")
     int updateQuestion(Question question);  // 更新问题信息
     
     @Select("select * from question where epicId = #{epicId}")
     List<Question> findQuestionsByEpicId(String epicId);
-    @Select("select * from question where questionState = #{state} and iterationId = #{iterationId}")
-    List<Question> findQuestionByState(int iterationId,String state);
+    
+    @Select("select question.*, userName\n" +
+            "from question\n" +
+            "left outer join user on question.userId = user.userId\n" +
+            "where questionState = #{state} and iterationId = #{iterationId}")
+    List<ShowQuestions> findQuestionByState(int iterationId,String state);
 }
 
 //    may the force be with you.

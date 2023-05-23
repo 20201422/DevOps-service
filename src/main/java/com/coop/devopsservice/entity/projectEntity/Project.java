@@ -18,7 +18,6 @@ public class Project {
     private String projectId;
     private String projectName;
     private String projectDescribe;
-    private List<User> users;
     
     public Project() {
     }
@@ -27,13 +26,6 @@ public class Project {
         this.projectId = projectId;
         this.projectName = projectName;
         this.projectDescribe = projectDescribe;
-    }
-    
-    public Project(String projectId, String projectName, String projectDescribe, List<User> users) {
-        this.projectId = projectId;
-        this.projectName = projectName;
-        this.projectDescribe = projectDescribe;
-        this.users = users;
     }
     
     public String getProjectId() {
@@ -60,33 +52,12 @@ public class Project {
         this.projectDescribe = projectDescribe;
     }
     
-    public List<User> getUsers() {
-        return users;
-    }
-    
-    public void setUsers(List<User> users) {
-        this.users = users;
-    }
-    
-    public List<User> addUser(User user) {  // 添加用户
-        if (users == null)
-            users = new ArrayList<>();
-        users.add(user);
-        return users;
-    }
-    
-    public void removeUser(User user) { // 移除用户
-        if (users != null)
-            users.remove(user);
-    }
-    
     @Override
     public String toString() {
         return "Project{" +
                 "projectId='" + projectId + '\'' +
                 ", projectName='" + projectName + '\'' +
                 ", projectDescribe='" + projectDescribe + '\'' +
-                ", users=" + users +
                 '}';
     }
 }

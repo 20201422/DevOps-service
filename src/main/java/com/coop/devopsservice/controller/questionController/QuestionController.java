@@ -34,13 +34,13 @@ public class QuestionController {
     public QuestionController() {
     }
     
-    @Autowired
     public QuestionController(QuestionServiceImpl questionService) {
         this.questionService = questionService;
     }
     public QuestionController(EpicServiceImpl epicService) {
         this.epicService = epicService;
     }
+    @Autowired
     public QuestionController(QuestionServiceImpl questionService, EpicServiceImpl epicService) {
         this.questionService = questionService;
         this.epicService = epicService;
@@ -67,7 +67,7 @@ public class QuestionController {
     }
     
     @PostMapping("/add")
-    public ApiResult addQuestion(Question question) {    // 添加一个问题
+    public ApiResult addQuestion(@RequestBody Question question) {    // 添加一个问题
         System.out.println("添加问题");
         
         QuestionFactory questionFactory = QuestionFactory.getInstance();    // 获取享元工厂对象
@@ -115,7 +115,7 @@ public class QuestionController {
         if (epic != null) { // 如果存在史诗
             
             String epicState = epic.getEpicState(); // 获取史诗状态
-            epic = new EpicState() {
+            epic = new EpicState(questionService) {
                 @Override
                 public String setQuestionState() {
                     return null;
