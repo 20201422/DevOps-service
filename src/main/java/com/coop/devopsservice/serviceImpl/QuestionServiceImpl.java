@@ -74,6 +74,11 @@ public class QuestionServiceImpl implements QuestionService {
         return questionMapper.findQuestionByState(iterationId,state);
     }
 
+    @Override
+    public List<ShowQuestions> findQuestionByIterationId(int iterationId) {
+        return questionMapper.findQuestionByIterationId(iterationId);
+    }
+
 }
 
 //    may the force be with you.

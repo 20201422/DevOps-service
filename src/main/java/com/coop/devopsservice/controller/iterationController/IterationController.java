@@ -55,6 +55,10 @@ public class IterationController {
     public ApiResult findQuestionsByState(@PathVariable("iterationId") int iterationId,@PathVariable("questionState") String state){    //根据状态查找一个或多个问题
         return ApiResultHandler.success(questionService.findQuestionByState(iterationId,state));
     }
+    @GetMapping("/findQuestionByIterationId/{iterationId}")
+    public ApiResult findQuestionByIterationId(@PathVariable("iterationId") int iterationId){
+        return ApiResultHandler.success(questionService.findQuestionByIterationId(iterationId));
+    }
 
     public IterationServiceImpl getIterationService() {
         return iterationService;

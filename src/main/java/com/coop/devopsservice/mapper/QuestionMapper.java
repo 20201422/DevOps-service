@@ -49,6 +49,11 @@ public interface QuestionMapper {
             "left outer join user on question.userId = user.userId\n" +
             "where questionState = #{state} and iterationId = #{iterationId}")
     List<ShowQuestions> findQuestionByState(int iterationId,String state);
+    @Select("select question.*, userName\n" +
+            "from question\n" +
+            "left outer join user on question.userId = user.userId\n" +
+            "where iterationId = #{iterationId}")
+    List<ShowQuestions> findQuestionByIterationId(int iterationId);
 }
 
 //    may the force be with you.
