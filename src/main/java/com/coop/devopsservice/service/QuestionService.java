@@ -22,7 +22,7 @@ public interface QuestionService {
     int updateQuestion(Question question);
     List<Question> findQuestionsByEpicId(String epicId);
     List<ShowQuestions> findQuestionByState(int iterationId,String state);
-
+    List<ShowQuestions> findQuestionByIterationId(int iterationId);
 }
 
 //    may the force be with you.
