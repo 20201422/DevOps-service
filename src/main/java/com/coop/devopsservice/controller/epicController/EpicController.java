@@ -8,6 +8,7 @@
 
 package com.coop.devopsservice.controller.epicController;
 
+import com.coop.devopsservice.designPattern.statePattern.EpicState;
 import com.coop.devopsservice.entity.ApiResult;
 import com.coop.devopsservice.entity.epicEntity.Epic;
 import com.coop.devopsservice.serviceImpl.EpicServiceImpl;
@@ -58,6 +59,14 @@ public class EpicController {
     @PostMapping("/add")
     public ApiResult addEpic(Epic epic) {    // 添加一个史诗
         System.out.println("添加史诗");
+        
+        epic = new EpicState() {
+            @Override
+            public String setQuestionState() {
+                return null;
+            }
+        }.stateCheck(epic); // 检查史诗状态
+        
         return ApiResultHandler.success(epicService.addEpic(epic));
     }
     

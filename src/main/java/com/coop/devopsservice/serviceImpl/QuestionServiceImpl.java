@@ -9,6 +9,7 @@
 package com.coop.devopsservice.serviceImpl;
 
 import com.coop.devopsservice.entity.questionEntity.Question;
+import com.coop.devopsservice.entity.questionEntity.ShowQuestions;
 import com.coop.devopsservice.mapper.QuestionMapper;
 import com.coop.devopsservice.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +39,7 @@ public class QuestionServiceImpl implements QuestionService {
     }
     
     @Override
-    public List<Question> findQuestions() { // 查找所有问题
+    public List<ShowQuestions> findQuestions() { // 查找所有问题
         return questionMapper.findQuestions();
     }
     
@@ -60,6 +61,11 @@ public class QuestionServiceImpl implements QuestionService {
     @Override
     public int updateQuestion(Question question) {  // 更新问题信息
         return questionMapper.updateQuestion(question);
+    }
+    
+    @Override
+    public List<Question> findQuestionsByEpicId(String epicId) {
+        return questionMapper.findQuestionsByEpicId(epicId);
     }
 }
 

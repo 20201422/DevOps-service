@@ -6,21 +6,21 @@
  * freedom is the oxygen of the soul.
  **/
 
-package com.coop.devopsservice.entity.storyEntity;
+package com.coop.devopsservice.entity.storyMapEntity;
 
 import com.coop.devopsservice.entity.epicEntity.EpicList;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Story {
+public class StoryMap {
     
     private List<EpicList> epics;
     
-    public Story() {
+    public StoryMap() {
     }
     
-    public Story(List<EpicList> epics) {
+    public StoryMap(List<EpicList> epics) {
         this.epics = epics;
     }
     

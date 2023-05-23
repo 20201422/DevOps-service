@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.coop</groupId>
-    <artifactId>devopsservice</artifactId>
+    <artifactId>DevOps-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>devopsservice</name>
     <description>devopsservice</description>

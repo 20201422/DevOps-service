@@ -9,16 +9,18 @@
 package com.coop.devopsservice.service;
 
 import com.coop.devopsservice.entity.questionEntity.Question;
+import com.coop.devopsservice.entity.questionEntity.ShowQuestions;
 
 import java.util.List;
 
 public interface QuestionService {
     
-    List<Question> findQuestions();
+    List<ShowQuestions> findQuestions();
     Question findQuestionById(String questionId);
     int addQuestion(Question question);
     int deleteQuestionById(String questionId);
     int updateQuestion(Question question);
+    List<Question> findQuestionsByEpicId(String epicId);
 
 }
 

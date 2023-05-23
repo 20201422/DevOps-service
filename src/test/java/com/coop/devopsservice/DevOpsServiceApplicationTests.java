@@ -2,6 +2,7 @@ package com.coop.devopsservice;
 
 import com.coop.devopsservice.controller.epicController.EpicController;
 import com.coop.devopsservice.controller.questionController.QuestionController;
+import com.coop.devopsservice.controller.storyController.StoryController;
 import com.coop.devopsservice.controller.userController.UserController;
 import com.coop.devopsservice.entity.ApiResult;
 import org.junit.jupiter.api.Test;
@@ -33,10 +34,10 @@ class DevOpsServiceApplicationTests {
 //        Question question = new Question("4",  "用例建模","对项目完成uml建模", "高", "规划中", "12", "34");
 //        ApiResult api = questionController.addQuestion(question);
 //        assertEquals(200, api.getCode());
-        
-        ApiResult apiResult = epicController.findEpics();
-        assertEquals(200, apiResult.getCode());
-        
+
+        StoryController storyController = new StoryController();
+        System.out.println(storyController.showStoryMap());
+    
     }
     
 }

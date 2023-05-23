@@ -17,6 +17,7 @@ public class EpicList {
 
     private Epic epic;
     private List<Question> questions;
+    private int index;
     
     public EpicList() {
     }
@@ -25,9 +26,10 @@ public class EpicList {
         this.epic = epic;
     }
     
-    public EpicList(Epic epic, List<Question> questions) {
+    public EpicList(Epic epic, List<Question> questions, int index) {
         this.epic = epic;
         this.questions = questions;
+        this.index = index;
     }
     
     public Epic getEpic() {
@@ -44,6 +46,14 @@ public class EpicList {
     
     public void setQuestions(List<Question> questions) {
         this.questions = questions;
+    }
+    
+    public int getIndex() {
+        return index;
+    }
+    
+    public void setIndex(int index) {
+        this.index = index;
     }
     
     public List<Question> addQuestion(Question question) {  // 添加问题
@@ -64,6 +74,7 @@ public class EpicList {
         return "EpicList{" +
                 "epic=" + epic +
                 ", questions=" + questions +
+                ", index=" + index +
                 '}';
     }
 }

@@ -1,14 +1,14 @@
 /**
- * @ClassName Question
+ * @ClassName ShowQuestions
  * @Author 24
- * @Date 2023/4/20 20:31
+ * @Date 2023/5/23 14:24
  * @Version 1.0.0
  * freedom is the oxygen of the soul.
  **/
 
 package com.coop.devopsservice.entity.questionEntity;
 
-public class Question {
+public class ShowQuestions {
     
     private int questionIndex;
     private String questionId;
@@ -22,13 +22,14 @@ public class Question {
     private String userId;
     private String epicId;
     private String iterationId;
+    private String userName;
     
-    public Question() {
+    public ShowQuestions() {
     }
     
-    public Question(int questionIndex, String questionId, String questionName, String questionDescribe,
-                    String questionPriority, String questionState, String beginTime, String endTime,
-                    String projectId, String userId, String epicId, String iterationId) {
+    public ShowQuestions(int questionIndex, String questionId, String questionName, String questionDescribe,
+                         String questionPriority, String questionState, String beginTime, String endTime,
+                         String projectId, String userId, String epicId, String iterationId, String userName) {
         this.questionIndex = questionIndex;
         this.questionId = questionId;
         this.questionName = questionName;
@@ -41,6 +42,7 @@ public class Question {
         this.userId = userId;
         this.epicId = epicId;
         this.iterationId = iterationId;
+        this.userName = userName;
     }
     
     public int getQuestionIndex() {
@@ -139,9 +141,17 @@ public class Question {
         this.iterationId = iterationId;
     }
     
+    public String getUserName() {
+        return userName;
+    }
+    
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+    
     @Override
     public String toString() {
-        return "Question{" +
+        return "ShowQuestions{" +
                 "questionIndex=" + questionIndex +
                 ", questionId='" + questionId + '\'' +
                 ", questionName='" + questionName + '\'' +
@@ -154,10 +164,11 @@ public class Question {
                 ", userId='" + userId + '\'' +
                 ", epicId='" + epicId + '\'' +
                 ", iterationId='" + iterationId + '\'' +
+                ", userName='" + userName + '\'' +
                 '}';
     }
 }
 
 //    may the force be with you.
-//
-//    Created by 24 on 2023/4/20.
+//    @ClassName   ShowQuestions
+//    Created by 24 on 2023/5/23.
