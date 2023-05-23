@@ -29,4 +29,7 @@ public interface IterationMapper {
     int addQuestionToIterationById(String questionId,int iterationId);   //将对应问题添加进对应迭代，即更新问题表的iterationId
     @Select("select iterationId from iteration where iterationName = #{iterationName}")
     int findIdByName(String iterationName);  //根据名字查id
+    @Select("select * from iteration where iterationState ='已开启' ")
+    Iteration findOpenedIteration();
+
 }

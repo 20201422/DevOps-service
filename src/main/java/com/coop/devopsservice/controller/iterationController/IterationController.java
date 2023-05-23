@@ -39,10 +39,13 @@ public class IterationController {
         return ApiResultHandler.success(iterationService.addQuestionToIterationById(questionId, iterationId));
     }
 
-    @GetMapping("/find/{iterationName}")
+    @GetMapping("/find/{iterationName}")   //为什么要加个find？因为不加会和findQuestionById冲突，前端会不知道选哪个方法
     public ApiResult findIdByName(@PathVariable("iterationName") String iterationName){
-        System.out.println("迭代名称："+iterationName);
         return ApiResultHandler.success(iterationService.findIdByName(iterationName));
     }
+    @GetMapping("/getOpenedIteration")
+    public ApiResult findOpenedIteration(){
+        return ApiResultHandler.success(iterationService.findOpenedIteration());
 
+    }
 }

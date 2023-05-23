@@ -53,6 +53,11 @@ public class IterationServiceImpl implements IterationService {
         return iterationMapper.findIdByName(iterationName);
     }
 
+    @Override
+    public Iteration findOpenedIteration() {
+        return iterationMapper.findOpenedIteration();
+    }
+
 
     public IterationMapper getIterationMapper() {
         return iterationMapper;

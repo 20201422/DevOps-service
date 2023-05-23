@@ -12,4 +12,5 @@ public interface IterationService {
     public int updateIteration(Iteration iteration);
     public int addQuestionToIterationById(String questionId,int iterationId);
     public int findIdByName(String iterationName);
+    public Iteration findOpenedIteration();
 }
