@@ -30,13 +30,13 @@ public interface QuestionMapper {
             "#{beginTime}, #{endTime}, #{projectId}, #{userId}, #{epicId}, #{iterationId})")
     int addQuestion(Question question); // 增加一个问题
     
-    @Delete("delete from question where id = #{questionId}")
+    @Delete("delete from question where questionId = #{questionId}")
     int deleteQuestionById(String questionId);  // 删除一个问题
     
     @Update("update question " +
             "set questionId = #{questionId}, questionName = #{questionName}, questionDescribe = #{questionDescribe}, " +
             "questionPriority = #{questionPriority}, questionState = #{questionState}, " +
-            "beginTime = #{beginTime}, endTime = #{endTime} projectId = #{projectId}, userId = #{userId}, " +
+            "beginTime = #{beginTime}, endTime = #{endTime}, projectId = #{projectId}, userId = #{userId}, " +
             "epicId = #{epicId}, iterationId = #{iterationId} " +
             "where questionId = #{questionId}")
     int updateQuestion(Question question);  // 更新问题信息

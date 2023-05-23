@@ -4,7 +4,6 @@ import com.coop.devopsservice.controller.epicController.EpicController;
 import com.coop.devopsservice.controller.questionController.QuestionController;
 import com.coop.devopsservice.controller.userController.UserController;
 import com.coop.devopsservice.entity.ApiResult;
-import com.coop.devopsservice.entity.epicEntity.Epic;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -31,8 +30,7 @@ class DevOpsServiceApplicationTests {
 //        ApiResult apiResult = userController.updateUser(user);
 //        assertEquals(200, apiResult.getCode());
         
-        Epic epic = new Epic(0, "12", "123", "1234", "中", null, "1");
-        ApiResult api = epicController.addEpic(epic);
+        ApiResult api = questionController.updateQuestionState("888", "已实现");
         assertEquals(200, api.getCode());
         
     }

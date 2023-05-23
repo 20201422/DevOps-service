@@ -11,11 +11,14 @@ package com.coop.devopsservice.controller.epicController;
 import com.coop.devopsservice.designPattern.statePattern.EpicState;
 import com.coop.devopsservice.entity.ApiResult;
 import com.coop.devopsservice.entity.epicEntity.Epic;
+import com.coop.devopsservice.entity.questionEntity.Question;
 import com.coop.devopsservice.serviceImpl.EpicServiceImpl;
 import com.coop.devopsservice.serviceImpl.QuestionServiceImpl;
 import com.coop.devopsservice.util.ApiResultHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("epic")
@@ -83,11 +86,21 @@ public class EpicController {
     @DeleteMapping("/delete/{questionId}")
     public ApiResult deleteEpicById(@PathVariable("questionId") String epicId) {    // 删除一个史诗
         System.out.println("删除史诗");
+        
+        // 将该史诗下的问题的史诗id去掉
+        List<Question> questions = questionService.findQuestionsByEpicId(epicId);
+        
+        for (Question question : questions) {
+            question.setEpicId(null);
+            System.out.println(question);
+            questionService.updateQuestion(question);
+        }
+        
         return ApiResultHandler.success(epicService.deleteEpicById(epicId));
     }
     
     @PutMapping("/update")
-    public ApiResult updateEpic(Epic epic) {    // 更新史诗
+    public ApiResult updateEpic(@RequestBody Epic epic) {    // 更新史诗
         System.out.println("更新史诗");
         return ApiResultHandler.success(epicService.updateEpic(epic));
     }

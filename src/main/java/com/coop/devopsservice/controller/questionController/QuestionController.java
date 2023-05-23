@@ -71,10 +71,12 @@ public class QuestionController {
         System.out.println("添加问题");
         
         QuestionFactory questionFactory = QuestionFactory.getInstance();    // 获取享元工厂对象
-        
         question.setQuestionState(Objects.requireNonNull(questionFactory.getQuestionState("规划中")).getQuestionState());
+        questionService.addQuestion(question);
         
-        return ApiResultHandler.success(questionService.addQuestion(question));
+        updateEpicState(question.getEpicId());  // 修改史诗状态
+        
+        return ApiResultHandler.success();
     }
     
     @PostMapping("/fastAdd")
@@ -92,11 +94,17 @@ public class QuestionController {
     @DeleteMapping("/delete/{questionId}")
     public ApiResult deleteQuestionById(@PathVariable("questionId") String questionId) {    // 删除一个问题
         System.out.println("删除问题");
-        return ApiResultHandler.success(questionService.deleteQuestionById(questionId));
+        
+        Question question = questionService.findQuestionById(questionId);   // 找到问题
+        questionService.deleteQuestionById(questionId); // 删除问题
+        
+        updateEpicState(question.getEpicId());  // 修改史诗状态
+        
+        return ApiResultHandler.success();
     }
     
     @PutMapping("/update")
-    public ApiResult updateQuestion(Question question) {    // 更新问题
+    public ApiResult updateQuestion(@RequestBody Question question) {    // 更新问题
         System.out.println("更新问题");
         return ApiResultHandler.success(questionService.updateQuestion(question));
     }
@@ -107,10 +115,16 @@ public class QuestionController {
         Question question = questionService.findQuestionById(questionId);   // 找到问题
         
         QuestionFactory questionFactory = QuestionFactory.getInstance();    // 获取享元工厂对象
+        question.setQuestionState(questionFactory.getQuestionState(state).getQuestionState());
+        questionService.updateQuestion(question);
         
-        question.setQuestionState(Objects.requireNonNull(questionFactory.getQuestionState(state)).getQuestionState());
+        updateEpicState(question.getEpicId());  // 修改史诗状态
         
-        Epic epic = epicService.findEpicById(question.getEpicId()); // 找到问题对应的史诗
+        return ApiResultHandler.success();
+    }
+    
+    private void updateEpicState(String epicId) {
+        Epic epic = epicService.findEpicById(epicId); // 找到问题对应的史诗
         
         if (epic != null) { // 如果存在史诗
             
@@ -126,9 +140,8 @@ public class QuestionController {
                 epicService.updateEpic(epic);   // 改变史诗状态
             }
         }
-        
-        return ApiResultHandler.success(questionService.updateQuestion(question));
     }
+    
 }
 
 //    may the force be with you.

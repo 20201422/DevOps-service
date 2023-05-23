@@ -51,11 +51,9 @@ public abstract class EpicState {
         
         if (toBeCompleted == questions.size()) {    // 都是规划中
             epic.setEpicState(new EpicToBeCompletedState(questionService).setQuestionState()); // 史诗状态为“规划中”
-        }
-        if (completed == questions.size()) {    // 都是已实现
+        } else if (completed == questions.size()) {    // 都是已实现
             epic.setEpicState(new EpicCompletedState(questionService).setQuestionState()); // 史诗状态为“已实现”
-        }
-        if (underway > 0) { // 存在实现中的问题
+        } else { // 存在实现中的问题
             epic.setEpicState(new EpicUnderwayState(questionService).setQuestionState());  // 史诗状态为“实现中”
         }
         
