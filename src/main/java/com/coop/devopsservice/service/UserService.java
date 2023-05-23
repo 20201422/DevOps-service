@@ -8,6 +8,7 @@
 
 package com.coop.devopsservice.service;
 
+import com.coop.devopsservice.entity.questionEntity.Question;
 import com.coop.devopsservice.entity.userEntity.UserIdAndUserName;
 import com.coop.devopsservice.entity.userEntity.User;
 

@@ -42,6 +42,8 @@ public interface QuestionMapper {
     
     @Select("select * from question where epicId = #{epicId}")
     List<Question> findQuestionsByEpicId(String epicId);
+    @Select("select * from question where questionState = #{state} and iterationId = #{iterationId}")
+    List<Question> findQuestionByState(int iterationId,String state);
 }
 
 //    may the force be with you.

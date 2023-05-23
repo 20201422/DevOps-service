@@ -3,6 +3,7 @@ package com.coop.devopsservice.controller.iterationController;
 import com.coop.devopsservice.entity.ApiResult;
 import com.coop.devopsservice.entity.iterationEntity.Iteration;
 import com.coop.devopsservice.serviceImpl.IterationServiceImpl;
+import com.coop.devopsservice.serviceImpl.QuestionServiceImpl;
 import com.coop.devopsservice.util.ApiResultHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,11 +12,13 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/iteration")
 public class IterationController {
     private IterationServiceImpl iterationService;
+    private QuestionServiceImpl questionService;
     public IterationController() {
     }
     @Autowired
-    public IterationController(IterationServiceImpl iterationService) {
+    public IterationController(IterationServiceImpl iterationService,QuestionServiceImpl questionService) {
         this.iterationService = iterationService;
+        this.questionService = questionService;
     }
     
     @GetMapping("/iterations")
@@ -47,5 +50,25 @@ public class IterationController {
     public ApiResult findOpenedIteration(){
         return ApiResultHandler.success(iterationService.findOpenedIteration());
 
+    }
+    @GetMapping("/findQuestionsByState/{iterationId}/{questionState}")
+    public ApiResult findQuestionsByState(@PathVariable("iterationId") int iterationId,@PathVariable("questionState") String state){    //根据状态查找一个或多个问题
+        return ApiResultHandler.success(questionService.findQuestionByState(iterationId,state));
+    }
+
+    public IterationServiceImpl getIterationService() {
+        return iterationService;
+    }
+
+    public void setIterationService(IterationServiceImpl iterationService) {
+        this.iterationService = iterationService;
+    }
+
+    public QuestionServiceImpl getQuestionService() {
+        return questionService;
+    }
+
+    public void setQuestionService(QuestionServiceImpl questionService) {
+        this.questionService = questionService;
     }
 }

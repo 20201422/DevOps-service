@@ -67,6 +67,12 @@ public class QuestionServiceImpl implements QuestionService {
     public List<Question> findQuestionsByEpicId(String epicId) {
         return questionMapper.findQuestionsByEpicId(epicId);
     }
+
+    @Override
+    public List<Question> findQuestionByState(int iterationId,String state) {
+        return questionMapper.findQuestionByState(iterationId,state);
+    }
+
 }
 
 //    may the force be with you.
