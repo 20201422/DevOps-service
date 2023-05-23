@@ -7,11 +7,11 @@ public class Iteration {
     private String iterationName;
     private String iterationDescribe;
     private String iterationState;
-    private Date startTime;
-    private Date endTime;
+    private String startTime;
+    private String endTime;
     private int projectId;
 
-    public Iteration(int iterationId, String iterationName, String iterationDescribe, String iterationState, Date startTime, Date endTime, int projectId) {
+    public Iteration(int iterationId, String iterationName, String iterationDescribe, String iterationState, String startTime, String endTime, int projectId) {
         this.iterationId = iterationId;
         this.iterationName = iterationName;
         this.iterationDescribe = iterationDescribe;
@@ -56,19 +56,19 @@ public class Iteration {
         this.iterationState = iterationState;
     }
 
-    public Date getStartTime() {
+    public String getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Date startTime) {
+    public void setStartTime(String startTime) {
         this.startTime = startTime;
     }
 
-    public Date getEndTime() {
+    public String getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Date endTime) {
+    public void setEndTime(String endTime) {
         this.endTime = endTime;
     }
 
