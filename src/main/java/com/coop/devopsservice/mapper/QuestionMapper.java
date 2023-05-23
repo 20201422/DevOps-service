@@ -9,6 +9,7 @@
 package com.coop.devopsservice.mapper;
 
 import com.coop.devopsservice.entity.questionEntity.Question;
+import com.coop.devopsservice.entity.questionEntity.ShowQuestions;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -16,14 +17,16 @@ import java.util.List;
 @Mapper
 public interface QuestionMapper {
     
-    @Select("select * from question")
-    List<Question> findQuestions(); // 查找所有问题
+    @Select("select question.*, userName\n" +
+            "from question\n" +
+            "left outer join user on question.userId = user.userId;\n")
+    List<ShowQuestions> findQuestions(); // 查找所有问题
 
     @Select("select * from question where questionId = #{questionId}")
     Question findQuestionById(String questionId);   // 查找某一个问题根据id
     
     @Insert("insert into question " +
-            "values(#{questionId}, #{questionName}, #{questionDescribe}, #{questionPriority}, #{questionState}, " +
+            "values(null, #{questionId}, #{questionName}, #{questionDescribe}, #{questionPriority}, #{questionState}, " +
             "#{beginTime}, #{endTime}, #{projectId}, #{userId}, #{epicId}, #{sprintId})")
     int addQuestion(Question question); // 增加一个问题
     
@@ -36,7 +39,9 @@ public interface QuestionMapper {
             "beginTime = #{beginTime}, endTime = #{endTime} projectId = #{projectId}, userId = #{userId}, " +
             "epicId = #{epicId}, sprintId = #{sprintId} where questionId = #{questionId}")
     int updateQuestion(Question question);  // 更新问题信息
-
+    
+    @Select("select * from question where epicId = #{epicId}")
+    List<Question> findQuestionsByEpicId(String epicId);
 }
 
 //    may the force be with you.

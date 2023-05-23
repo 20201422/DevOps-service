@@ -10,6 +10,7 @@ package com.coop.devopsservice.entity.epicEntity;
 
 public class Epic {
     
+    private int epicIndex;
     private String epicId;
     private String epicName;
     private String epicDescribe;
@@ -20,13 +21,23 @@ public class Epic {
     public Epic() {
     }
     
-    public Epic(String epicId, String epicName, String epicDescribe, String epicPriority, String epicState, String projectId) {
+    public Epic(int epicIndex, String epicId, String epicName, String epicDescribe,
+                String epicPriority, String epicState, String projectId) {
+        this.epicIndex = epicIndex;
         this.epicId = epicId;
         this.epicName = epicName;
         this.epicDescribe = epicDescribe;
         this.epicPriority = epicPriority;
         this.epicState = epicState;
         this.projectId = projectId;
+    }
+    
+    public int getEpicIndex() {
+        return epicIndex;
+    }
+    
+    public void setEpicIndex(int epicIndex) {
+        this.epicIndex = epicIndex;
     }
     
     public String getEpicId() {
@@ -80,7 +91,8 @@ public class Epic {
     @Override
     public String toString() {
         return "Epic{" +
-                "epicId='" + epicId + '\'' +
+                "epicIndex=" + epicIndex +
+                ", epicId='" + epicId + '\'' +
                 ", epicName='" + epicName + '\'' +
                 ", epicDescribe='" + epicDescribe + '\'' +
                 ", epicPriority='" + epicPriority + '\'' +
