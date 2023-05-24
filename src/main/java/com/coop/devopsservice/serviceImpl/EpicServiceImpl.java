@@ -49,8 +49,8 @@ public class EpicServiceImpl implements EpicService {
     }
     
     @Override
-    public Epic findEpicById(String epicId) {   // 查找一个史诗根据Id
-        return epicMapper.findEpicById(epicId);
+    public Epic findEpicById(String epicId, String projectId) {   // 查找一个史诗根据Id
+        return epicMapper.findEpicById(epicId, projectId);
     }
     
     @Override
@@ -59,13 +59,53 @@ public class EpicServiceImpl implements EpicService {
     }
     
     @Override
-    public int deleteEpicById(String epicId) {  // 删除一个历史
-        return epicMapper.deleteEpicById(epicId);
+    public int deleteEpicById(String epicId, String projectId) {  // 删除一个史诗
+        return epicMapper.deleteEpicById(epicId, projectId);
     }
     
     @Override
     public int updateEpic(Epic epic) {  // 更新史诗信息
         return epicMapper.updateEpic(epic);
+    }
+    
+    @Override
+    public Epic findLastEpic() { // 查询最后一个史诗
+        return epicMapper.findLastEpic();
+    }
+    
+    @Override
+    public int lockEpic() { // 锁定事务的写操作
+        return epicMapper.lockEpic();
+    }
+    
+    @Override
+    public int removeEpicAutoIncrement() {  // 去掉史诗自增
+        return epicMapper.removeEpicAutoIncrement();
+    }
+    
+    @Override
+    public int removeEpicPrimaryKey() { // 去掉史诗主键
+        return epicMapper.removeEpicPrimaryKey();
+    }
+    
+    @Override
+    public int updateEpicIndex(int epicIndex) { // 更改史诗后续下标
+        return epicMapper.updateEpicIndex(epicIndex);
+    }
+    
+    @Override
+    public int addEpicPrimaryKey() {    // 添加史诗主键
+        return epicMapper.addEpicPrimaryKey();
+    }
+    
+    @Override
+    public int addEpicAutoIncrement() { // 添加史诗自增
+        return epicMapper.addEpicAutoIncrement();
+    }
+    
+    @Override
+    public int unlockEpic() {   // 解锁
+        return epicMapper.unlockEpic();
     }
 }
 

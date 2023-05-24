@@ -42,7 +42,7 @@ public class StoryMapFacade extends AbstractStoryMapFacade {
         List<Epic> epics =  epicService.findEpics(projectId);    // 查找所有史诗
         
         for (Epic epic : epics) {
-            List<Question> questions = questionService.findQuestionsByEpicId(epic.getEpicId()); // 根据史诗查找问题
+            List<Question> questions = questionService.findQuestionsByEpicId(epic.getEpicId(), projectId); // 根据史诗查找问题
             
             questions.sort(Comparator.comparingInt(Question::getQuestionIndex));    // 按照index排序
             

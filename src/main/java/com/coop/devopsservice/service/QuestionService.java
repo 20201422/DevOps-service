@@ -16,13 +16,21 @@ import java.util.List;
 public interface QuestionService {
     
     List<ShowQuestions> findQuestions(String projectId);
-    Question findQuestionById(String questionId);
+    Question findQuestionById(String questionId, String projectId);
     int addQuestion(Question question);
-    int deleteQuestionById(String questionId);
+    int deleteQuestionById(String questionId, String projectId);
     int updateQuestion(Question question);
-    List<Question> findQuestionsByEpicId(String epicId);
+    List<Question> findQuestionsByEpicId(String epicId, String projectId);
     List<ShowQuestions> findQuestionByState(int iterationId,String state);
     List<ShowQuestions> findQuestionByIterationId(int iterationId);
+    Question findLastQuestion();
+    int lockQuestion();
+    int removeQuestionAutoIncrement();
+    int removeQuestionPrimaryKey();
+    int updateQuestionIndex(int questionIndex);
+    int addQuestionPrimaryKey();
+    int addQuestionAutoIncrement();
+    int unlockQuestion();
 }
 
 //    may the force be with you.
