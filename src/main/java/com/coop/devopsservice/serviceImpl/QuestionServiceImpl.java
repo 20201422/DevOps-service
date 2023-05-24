@@ -44,8 +44,8 @@ public class QuestionServiceImpl implements QuestionService {
     }
     
     @Override
-    public Question findQuestionById(String questionId) {   // 查找一个问题根据id
-        return questionMapper.findQuestionById(questionId);
+    public Question findQuestionById(String questionId, String projectId) {   // 查找一个问题根据id
+        return questionMapper.findQuestionById(questionId, projectId);
     }
     
     @Override
@@ -55,8 +55,8 @@ public class QuestionServiceImpl implements QuestionService {
     }
     
     @Override
-    public int deleteQuestionById(String questionId) {  // 删除一个问题
-        return questionMapper.deleteQuestionById(questionId);
+    public int deleteQuestionById(String questionId, String projectId) {  // 删除一个问题
+        return questionMapper.deleteQuestionById(questionId, projectId);
     }
     
     @Override
@@ -65,8 +65,8 @@ public class QuestionServiceImpl implements QuestionService {
     }
     
     @Override
-    public List<Question> findQuestionsByEpicId(String epicId) {
-        return questionMapper.findQuestionsByEpicId(epicId);
+    public List<Question> findQuestionsByEpicId(String epicId, String projectId) {    // 根据史诗查找问题
+        return questionMapper.findQuestionsByEpicId(epicId, projectId);
     }
 
     @Override
@@ -78,7 +78,47 @@ public class QuestionServiceImpl implements QuestionService {
     public List<ShowQuestions> findQuestionByIterationId(int iterationId) {
         return questionMapper.findQuestionByIterationId(iterationId);
     }
-
+    
+    @Override
+    public Question findLastQuestion() { // 查询最后一个问题
+        return questionMapper.findLastQuestion();
+    }
+    
+    @Override
+    public int lockQuestion() { // 锁定事务的写操作
+        return questionMapper.lockQuestion();
+    }
+    
+    @Override
+    public int removeQuestionAutoIncrement() {  // 去掉问题自增
+        return questionMapper.removeQuestionAutoIncrement();
+    }
+    
+    @Override
+    public int removeQuestionPrimaryKey() { // 去掉问题主键
+        return questionMapper.removeQuestionPrimaryKey();
+    }
+    
+    @Override
+    public int updateQuestionIndex(int questionIndex) { // 更改问题后续下标
+        return questionMapper.updateQuestionIndex(questionIndex);
+    }
+    
+    @Override
+    public int addQuestionPrimaryKey() {    // 添加问题主键
+        return questionMapper.addQuestionPrimaryKey();
+    }
+    
+    @Override
+    public int addQuestionAutoIncrement() { // 添加问题自增
+        return questionMapper.addQuestionAutoIncrement();
+    }
+    
+    @Override
+    public int unlockQuestion() {   // 解锁
+        return questionMapper.unlockQuestion();
+    }
+    
 }
 
 //    may the force be with you.

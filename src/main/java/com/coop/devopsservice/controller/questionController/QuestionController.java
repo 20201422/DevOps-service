@@ -8,6 +8,8 @@
 
 package com.coop.devopsservice.controller.questionController;
 
+import com.coop.devopsservice.designPattern.kp_facadePattern.AbstractModelSequenceFacade;
+import com.coop.devopsservice.designPattern.kp_facadePattern.QuestionSequenceFacade;
 import com.coop.devopsservice.designPattern.kp_factoryPattern.FastModel;
 import com.coop.devopsservice.designPattern.kp_factoryPattern.FastModelFactory;
 import com.coop.devopsservice.designPattern.kp_factoryPattern.FastQuestionFactory;
@@ -30,20 +32,17 @@ public class QuestionController {
     
     private QuestionServiceImpl questionService;
     private EpicServiceImpl epicService;
+    private AbstractModelSequenceFacade questionSequenceFacade = new QuestionSequenceFacade();
     
     public QuestionController() {
     }
     
-    public QuestionController(QuestionServiceImpl questionService) {
-        this.questionService = questionService;
-    }
-    public QuestionController(EpicServiceImpl epicService) {
-        this.epicService = epicService;
-    }
     @Autowired
-    public QuestionController(QuestionServiceImpl questionService, EpicServiceImpl epicService) {
+    public QuestionController(QuestionServiceImpl questionService, EpicServiceImpl epicService,
+                              AbstractModelSequenceFacade questionSequenceFacade) {
         this.questionService = questionService;
         this.epicService = epicService;
+        this.questionSequenceFacade = questionSequenceFacade;
     }
     
     public QuestionServiceImpl getQuestionService() {
@@ -54,16 +53,32 @@ public class QuestionController {
         this.questionService = questionService;
     }
     
+    public EpicServiceImpl getEpicService() {
+        return epicService;
+    }
+    
+    public void setEpicService(EpicServiceImpl epicService) {
+        this.epicService = epicService;
+    }
+    
+    public AbstractModelSequenceFacade getQuestionSequenceFacade() {
+        return questionSequenceFacade;
+    }
+    
+    public void setQuestionSequenceFacade(AbstractModelSequenceFacade questionSequenceFacade) {
+        this.questionSequenceFacade = questionSequenceFacade;
+    }
+    
     @GetMapping("/questions/{projectId}")
     public ApiResult findQuestions(@PathVariable("projectId") String projectId) {    // 查找全部问题
         System.out.println("查询全部问题");
         return ApiResultHandler.success(questionService.findQuestions(projectId));
     }
     
-    @GetMapping("/{questionId}")
-    public ApiResult findQuestionById(@PathVariable("questionId") String questionId) {  // 根据id查找问题
+    @GetMapping("/{questionId}/{projectId}")
+    public ApiResult findQuestionById(@PathVariable("questionId") String questionId, @PathVariable("projectId") String projectId) {  // 根据id查找问题
         System.out.println("根据ID查找问题");
-        return ApiResultHandler.success(questionService.findQuestionById(questionId));
+        return ApiResultHandler.success(questionService.findQuestionById(questionId, projectId));
     }
     
     @PostMapping("/add")
@@ -74,7 +89,7 @@ public class QuestionController {
         question.setQuestionState(Objects.requireNonNull(questionFactory.getQuestionState("规划中")).getQuestionState());
         questionService.addQuestion(question);
         
-        updateEpicState(question.getEpicId());  // 修改史诗状态
+        updateEpicState(question.getEpicId(), question.getProjectId());  // 修改史诗状态
         
         return ApiResultHandler.success();
     }
@@ -91,14 +106,14 @@ public class QuestionController {
         return ApiResultHandler.success(questionService.addQuestion(question));
     }
     
-    @DeleteMapping("/delete/{questionId}")
-    public ApiResult deleteQuestionById(@PathVariable("questionId") String questionId) {    // 删除一个问题
+    @DeleteMapping("/delete/{questionId}/{projectId}")
+    public ApiResult deleteQuestionById(@PathVariable("questionId") String questionId, @PathVariable("projectId") String projectId) {    // 删除一个问题
         System.out.println("删除问题");
         
-        Question question = questionService.findQuestionById(questionId);   // 找到问题
-        questionService.deleteQuestionById(questionId); // 删除问题
+        Question question = questionService.findQuestionById(questionId, projectId);   // 找到问题
+        questionService.deleteQuestionById(questionId, projectId); // 删除问题
         
-        updateEpicState(question.getEpicId());  // 修改史诗状态
+        updateEpicState(question.getEpicId(), projectId);  // 修改史诗状态
         
         return ApiResultHandler.success();
     }
@@ -110,21 +125,21 @@ public class QuestionController {
     }
     
     @PutMapping("/update/state")
-    public ApiResult updateQuestionState(String questionId, String state) { // 更新问题的状态
+    public ApiResult updateQuestionState(String questionId, String state, String projectId) { // 更新问题的状态
         System.out.println("更新问题的状态");
-        Question question = questionService.findQuestionById(questionId);   // 找到问题
+        Question question = questionService.findQuestionById(questionId, projectId);   // 找到问题
         
         QuestionFactory questionFactory = QuestionFactory.getInstance();    // 获取享元工厂对象
         question.setQuestionState(questionFactory.getQuestionState(state).getQuestionState());
         questionService.updateQuestion(question);
         
-        updateEpicState(question.getEpicId());  // 修改史诗状态
+        updateEpicState(question.getEpicId(), projectId);  // 修改史诗状态
         
         return ApiResultHandler.success();
     }
     
-    private void updateEpicState(String epicId) {
-        Epic epic = epicService.findEpicById(epicId); // 找到问题对应的史诗
+    private void updateEpicState(String epicId, String projectId) {
+        Epic epic = epicService.findEpicById(epicId, projectId); // 找到问题对应的史诗
         
         if (epic != null) { // 如果存在史诗
             
@@ -140,6 +155,15 @@ public class QuestionController {
                 epicService.updateEpic(epic);   // 改变史诗状态
             }
         }
+    }
+    
+    @PostMapping("/update/sequence")
+    public ApiResult updateQuestionSequence(@RequestBody Question question) {   // 更改问题的顺序
+        System.out.println("更新问题的顺序");
+        
+        questionSequenceFacade.changeSequence(question);
+        
+        return ApiResultHandler.success();
     }
     
 }

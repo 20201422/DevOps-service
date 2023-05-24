@@ -17,11 +17,18 @@ public interface EpicService {
 
     List<Epic> findEpics(String projectId);
     List<EpicIdAndEpicName> findEpicsOnlyIdAndName(String projectId);
-    Epic findEpicById(String epicId);
+    Epic findEpicById(String epicId, String projectId);
     int addEpic(Epic epic);
-    int deleteEpicById(String epicId);
+    int deleteEpicById(String epicId, String projectId);
     int updateEpic(Epic epic);
-
+    Epic findLastEpic();
+    int lockEpic();
+    int removeEpicAutoIncrement();
+    int removeEpicPrimaryKey();
+    int updateEpicIndex(int epicIndex);
+    int addEpicPrimaryKey();
+    int addEpicAutoIncrement();
+    int unlockEpic();
 }
 
 //    may the force be with you.

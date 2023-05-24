@@ -30,7 +30,7 @@ public abstract class EpicState {
     }
     
     public Epic stateCheck(Epic epic) {
-        List<Question> questions = questionService.findQuestionsByEpicId(epic.getEpicId());
+        List<Question> questions = questionService.findQuestionsByEpicId(epic.getEpicId(), epic.getProjectId());
         
         if (questions.size() == 0) {    // 该史诗下没有问题，那么状态就是“规划中”
             epic.setEpicState(new EpicToBeCompletedState(questionService).setQuestionState());

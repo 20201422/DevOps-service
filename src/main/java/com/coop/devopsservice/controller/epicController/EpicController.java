@@ -8,6 +8,8 @@
 
 package com.coop.devopsservice.controller.epicController;
 
+import com.coop.devopsservice.designPattern.kp_facadePattern.AbstractModelSequenceFacade;
+import com.coop.devopsservice.designPattern.kp_facadePattern.EpicSequenceFacade;
 import com.coop.devopsservice.designPattern.kp_statePattern.EpicState;
 import com.coop.devopsservice.entity.ApiResult;
 import com.coop.devopsservice.entity.epicEntity.Epic;
@@ -26,14 +28,17 @@ public class EpicController {
     
     private EpicServiceImpl epicService;
     private QuestionServiceImpl questionService;
+    private AbstractModelSequenceFacade epicSequenceFacade = new EpicSequenceFacade();
     
     public EpicController() {
     }
     
     @Autowired
-    public EpicController(EpicServiceImpl epicService, QuestionServiceImpl questionService) {
+    public EpicController(EpicServiceImpl epicService, QuestionServiceImpl questionService,
+                          AbstractModelSequenceFacade epicSequenceFacade) {
         this.epicService = epicService;
         this.questionService = questionService;
+        this.epicSequenceFacade = epicSequenceFacade;
     }
     
     public EpicServiceImpl getEpicService() {
@@ -52,6 +57,14 @@ public class EpicController {
         this.questionService = questionService;
     }
     
+    public AbstractModelSequenceFacade getEpicSequenceFacade() {
+        return epicSequenceFacade;
+    }
+    
+    public void setEpicSequenceFacade(AbstractModelSequenceFacade epicSequenceFacade) {
+        this.epicSequenceFacade = epicSequenceFacade;
+    }
+    
     @GetMapping("/epics/{projectId}")
     public ApiResult findEpics(@PathVariable("projectId") String projectId) {    // 查找全部史诗
         System.out.println("查询全部史诗");
@@ -64,10 +77,10 @@ public class EpicController {
         return ApiResultHandler.success(epicService.findEpicsOnlyIdAndName(projectId));
     }
     
-    @GetMapping("/{questionId}")
-    public ApiResult findEpicById(@PathVariable("questionId") String epicId) {  // 根据id查找史诗
+    @GetMapping("/{questionId}/{projectId}")
+    public ApiResult findEpicById(@PathVariable("questionId") String epicId, @PathVariable("projectId") String projectId) {  // 根据id查找史诗
         System.out.println("根据ID查找史诗");
-        return ApiResultHandler.success(epicService.findEpicById(epicId));
+        return ApiResultHandler.success(epicService.findEpicById(epicId, projectId));
     }
     
     @PostMapping("/add")
@@ -83,20 +96,20 @@ public class EpicController {
         return ApiResultHandler.success(epicService.addEpic(epic));
     }
     
-    @DeleteMapping("/delete/{questionId}")
-    public ApiResult deleteEpicById(@PathVariable("questionId") String epicId) {    // 删除一个史诗
+    @DeleteMapping("/delete/{questionId}/{projectId}")
+    public ApiResult deleteEpicById(@PathVariable("questionId") String epicId, @PathVariable("projectId") String projectId) {    // 删除一个史诗
         System.out.println("删除史诗");
         
         // 将该史诗下的问题的史诗id去掉
-        List<Question> questions = questionService.findQuestionsByEpicId(epicId);
+        List<Question> questions = questionService.findQuestionsByEpicId(epicId, projectId);
         
         for (Question question : questions) {
             question.setEpicId(null);
-            System.out.println(question);
+//            System.out.println(question);
             questionService.updateQuestion(question);
         }
         
-        return ApiResultHandler.success(epicService.deleteEpicById(epicId));
+        return ApiResultHandler.success(epicService.deleteEpicById(epicId, projectId));
     }
     
     @PutMapping("/update")
@@ -104,6 +117,16 @@ public class EpicController {
         System.out.println("更新史诗");
         return ApiResultHandler.success(epicService.updateEpic(epic));
     }
+    
+    @PostMapping("/update/sequence")
+    public ApiResult updateEpicSequence(@RequestBody Epic epic) {   // 更改史诗的顺序
+        System.out.println("更新史诗的顺序");
+        
+        epicSequenceFacade.changeSequence(epic);
+        
+        return ApiResultHandler.success();
+    }
+    
 }
 
 //    may the force be with you.

@@ -4,6 +4,8 @@ import com.coop.devopsservice.controller.epicController.EpicController;
 import com.coop.devopsservice.controller.questionController.QuestionController;
 import com.coop.devopsservice.controller.userController.UserController;
 import com.coop.devopsservice.entity.ApiResult;
+import com.coop.devopsservice.entity.epicEntity.Epic;
+import com.coop.devopsservice.entity.questionEntity.Question;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -29,8 +31,12 @@ class DevOpsServiceApplicationTests {
 //        User user = new User("20201423", "瑞祥", "123456", "组员", "rx.jpeg");
 //        ApiResult apiResult = userController.updateUser(user);
 //        assertEquals(200, apiResult.getCode());
+
+//        Epic epic = new Epic(6, "613", "12", "", "低", "已实现", "2428");
         
-        ApiResult api = questionController.updateQuestionState("888", "已实现");
+        Question question = new Question(19, "1222", "abc", "", "低", "规划中", "", "", "2428", "", "612", "1");
+        
+        ApiResult api = questionController.updateQuestionSequence(question);
         assertEquals(200, api.getCode());
         
     }
