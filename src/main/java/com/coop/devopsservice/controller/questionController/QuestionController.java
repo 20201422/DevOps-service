@@ -54,10 +54,10 @@ public class QuestionController {
         this.questionService = questionService;
     }
     
-    @GetMapping("/questions")
-    public ApiResult findQuestions() {    // 查找全部问题
+    @GetMapping("/questions/{projectId}")
+    public ApiResult findQuestions(@PathVariable("projectId") String projectId) {    // 查找全部问题
         System.out.println("查询全部问题");
-        return ApiResultHandler.success(questionService.findQuestions());
+        return ApiResultHandler.success(questionService.findQuestions(projectId));
     }
     
     @GetMapping("/{questionId}")

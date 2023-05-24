@@ -18,14 +18,16 @@ public class Project {
     private String projectId;
     private String projectName;
     private String projectDescribe;
+    private String projectState;
     
     public Project() {
     }
     
-    public Project(String projectId, String projectName, String projectDescribe) {
+    public Project(String projectId, String projectName, String projectDescribe, String projectState) {
         this.projectId = projectId;
         this.projectName = projectName;
         this.projectDescribe = projectDescribe;
+        this.projectState = projectState;
     }
     
     public String getProjectId() {
@@ -52,12 +54,21 @@ public class Project {
         this.projectDescribe = projectDescribe;
     }
     
+    public String getProjectState() {
+        return projectState;
+    }
+    
+    public void setProjectState(String projectState) {
+        this.projectState = projectState;
+    }
+    
     @Override
     public String toString() {
         return "Project{" +
                 "projectId='" + projectId + '\'' +
                 ", projectName='" + projectName + '\'' +
                 ", projectDescribe='" + projectDescribe + '\'' +
+                ", projectState='" + projectState + '\'' +
                 '}';
     }
 }

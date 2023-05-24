@@ -38,14 +38,14 @@ public class ProjectController {
         this.projectService = projectService;
     }
     
-    @GetMapping("/epics")
-    public ApiResult findProjects() {    // 查找全部项目
+    @GetMapping("/projects/{userId}")
+    public ApiResult findProjects(@PathVariable("userId") String userId) {    // 查找全部项目
         System.out.println("查询全部项目");
-        return ApiResultHandler.success(projectService.findProjects());
+        return ApiResultHandler.success(projectService.findProjects(userId));
     }
     
-    @GetMapping("/{questionId}")
-    public ApiResult findProjectById(@PathVariable("questionId") String projectId) {  // 根据id查找项目
+    @GetMapping("/{projectId}")
+    public ApiResult findProjectById(@PathVariable("projectId") String projectId) {  // 根据id查找项目
         System.out.println("根据ID查找项目");
         return ApiResultHandler.success(projectService.findProjectById(projectId));
     }

@@ -16,8 +16,10 @@ import java.util.List;
 @Mapper
 public interface ProjectMapper {
     
-    @Select("select * from project")
-    List<Project> findProjects();   // 查找所有项目
+    @Select("select project.*\n" +
+            "from project, project_and_user\n" +
+            "where project.projectId = project_and_user.projectId and userId = #{userId}")
+    List<Project> findProjects(String userId);   // 查找所有项目
     
     @Select("select * from project where projectId = #{projectId}")
     Project findProjectById(String id); // 查找某一个项目根据id

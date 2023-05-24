@@ -39,13 +39,13 @@ public class EpicServiceImpl implements EpicService {
     }
     
     @Override
-    public List<Epic> findEpics() { // 查找所有史诗
-        return epicMapper.findEpics();
+    public List<Epic> findEpics(String projectId) { // 查找所有史诗
+        return epicMapper.findEpics(projectId);
     }
     
     @Override
-    public List<EpicIdAndEpicName> findEpicsOnlyIdAndName() {   // 查找史诗的id和名字
-        return epicMapper.findEpicsOnlyIdAndName();
+    public List<EpicIdAndEpicName> findEpicsOnlyIdAndName(String projectId) {   // 查找史诗的id和名字
+        return epicMapper.findEpicsOnlyIdAndName(projectId);
     }
     
     @Override

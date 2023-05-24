@@ -14,7 +14,7 @@ import java.util.List;
 
 public interface ProjectService {
 
-    List<Project> findProjects();
+    List<Project> findProjects(String userId);
     Project findProjectById(String projectId);
     int addProject(Project project);
     int deleteProjectById(String projectId);

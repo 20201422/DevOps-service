@@ -52,16 +52,16 @@ public class EpicController {
         this.questionService = questionService;
     }
     
-    @GetMapping("/epics")
-    public ApiResult findEpics() {    // 查找全部史诗
+    @GetMapping("/epics/{projectId}")
+    public ApiResult findEpics(@PathVariable("projectId") String projectId) {    // 查找全部史诗
         System.out.println("查询全部史诗");
-        return ApiResultHandler.success(epicService.findEpics());
+        return ApiResultHandler.success(epicService.findEpics(projectId));
     }
     
-    @GetMapping("/epics/idAndName")
-    public ApiResult findEpicsOnlyIdAndName() { // 查找史诗的id和名字
+    @GetMapping("/epics/idAndName/{projectId}")
+    public ApiResult findEpicsOnlyIdAndName(@PathVariable("projectId") String projectId) { // 查找史诗的id和名字
         System.out.println("查询史诗的id和名字");
-        return ApiResultHandler.success(epicService.findEpicsOnlyIdAndName());
+        return ApiResultHandler.success(epicService.findEpicsOnlyIdAndName(projectId));
     }
     
     @GetMapping("/{questionId}")

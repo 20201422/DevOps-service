@@ -15,7 +15,7 @@ import java.util.List;
 
 public interface QuestionService {
     
-    List<ShowQuestions> findQuestions();
+    List<ShowQuestions> findQuestions(String projectId);
     Question findQuestionById(String questionId);
     int addQuestion(Question question);
     int deleteQuestionById(String questionId);

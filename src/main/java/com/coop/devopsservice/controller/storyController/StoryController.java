@@ -14,6 +14,7 @@ import com.coop.devopsservice.entity.ApiResult;
 import com.coop.devopsservice.util.ApiResultHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -39,11 +40,11 @@ public class StoryController {
         this.storyMapFacade = storyMapFacade;
     }
     
-    @GetMapping("/")
-    public ApiResult showStoryMap() {    // 查找故事地图
+    @GetMapping("/{projectId}")
+    public ApiResult showStoryMap(@PathVariable("projectId") String projectId) {    // 查找故事地图
         System.out.println("查询故事地图");
         
-        return ApiResultHandler.success(storyMapFacade.getStoryMap(""));
+        return ApiResultHandler.success(storyMapFacade.getStoryMap(projectId));
     }
     
 }

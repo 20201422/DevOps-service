@@ -19,8 +19,9 @@ public interface QuestionMapper {
     
     @Select("select question.*, userName\n" +
             "from question\n" +
-            "left outer join user on question.userId = user.userId;")
-    List<ShowQuestions> findQuestions(); // 查找所有问题
+            "left outer join user on question.userId = user.userId\n" +
+            "where projectId = #{projectId}")
+    List<ShowQuestions> findQuestions(String projectId); // 查找所有问题
 
     @Select("select * from question where questionId = #{questionId}")
     Question findQuestionById(String questionId);   // 查找某一个问题根据id
@@ -34,9 +35,9 @@ public interface QuestionMapper {
     int deleteQuestionById(String questionId);  // 删除一个问题
     
     @Update("update question " +
-            "set questionId = #{questionId}, questionName = #{questionName}, questionDescribe = #{questionDescribe}, " +
+            "set questionName = #{questionName}, questionDescribe = #{questionDescribe}, " +
             "questionPriority = #{questionPriority}, questionState = #{questionState}, " +
-            "beginTime = #{beginTime}, endTime = #{endTime}, projectId = #{projectId}, userId = #{userId}, " +
+            "beginTime = #{beginTime}, endTime = #{endTime}, userId = #{userId}, " +
             "epicId = #{epicId}, iterationId = #{iterationId} " +
             "where questionId = #{questionId}")
     int updateQuestion(Question question);  // 更新问题信息
@@ -49,6 +50,7 @@ public interface QuestionMapper {
             "left outer join user on question.userId = user.userId\n" +
             "where questionState = #{state} and iterationId = #{iterationId}")
     List<ShowQuestions> findQuestionByState(int iterationId,String state);
+    
     @Select("select question.*, userName\n" +
             "from question\n" +
             "left outer join user on question.userId = user.userId\n" +

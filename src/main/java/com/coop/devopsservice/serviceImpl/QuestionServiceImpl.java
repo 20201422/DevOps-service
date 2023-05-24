@@ -39,8 +39,8 @@ public class QuestionServiceImpl implements QuestionService {
     }
     
     @Override
-    public List<ShowQuestions> findQuestions() { // 查找所有问题
-        return questionMapper.findQuestions();
+    public List<ShowQuestions> findQuestions(String projectId) { // 查找所有问题
+        return questionMapper.findQuestions(projectId);
     }
     
     @Override

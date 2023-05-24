@@ -20,8 +20,10 @@ public interface UserMapper {
     @Select("select * from user")
     List<User> findUsers();  // 查找所有用户
     
-    @Select("select userId, userName from user")
-    List<UserIdAndUserName> findUsersOnlyIdAndName();    // 查找用户的id和名字
+    @Select("select user.userId, userName \n" +
+            "from user, project_and_user\n" +
+            "where user.userId = project_and_user.userId and projectId = #{projectId}")
+    List<UserIdAndUserName> findUsersOnlyIdAndName(String projectId);    // 查找用户的id和名字
     
     @Select("select * from user where userId = #{userId}")
     User findUserById(String userId);    // 查找一个用户根据id

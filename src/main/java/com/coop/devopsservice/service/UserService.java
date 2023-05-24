@@ -17,7 +17,7 @@ import java.util.List;
 public interface UserService {
 
     List<User> findUsers();
-    List<UserIdAndUserName> findUsersOnlyIdAndName();
+    List<UserIdAndUserName> findUsersOnlyIdAndName(String projectId);
     User findUserById(String userId);
     int addUser(User user);
     int deleteById(String userId);

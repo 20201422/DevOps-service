@@ -17,11 +17,11 @@ import java.util.List;
 @Mapper
 public interface EpicMapper {
     
-    @Select("select * from epic")
-    List<Epic> findEpics();   // 查找所有史诗
+    @Select("select * from epic where projectId = #{projectId}")
+    List<Epic> findEpics(String projectId);   // 查找所有史诗
     
-    @Select("select epicId, epicName from epic")
-    List<EpicIdAndEpicName> findEpicsOnlyIdAndName();   // 查找史诗的id和名字
+    @Select("select epicId, epicName from epic where projectId = #{projectId}")
+    List<EpicIdAndEpicName> findEpicsOnlyIdAndName(String projectId);   // 查找史诗的id和名字
     
     @Select("select * from epic where epicId = #{epicId}")
     Epic findEpicById(String epicId);   // 查找一个史诗根据id
@@ -34,7 +34,7 @@ public interface EpicMapper {
     
     @Update("update epic " +
             "set epicId = #{epicId}, epicName = #{epicName}, epicDescribe = #{epicDescribe}, " +
-            "epicPriority = #{epicPriority}, epicState = #{epicState}, projectId = #{projectId} " +
+            "epicPriority = #{epicPriority}, epicState = #{epicState} " +
             "where epicId = #{epicId}")
     int updateEpic(Epic epic);  // 更新历史信息
 

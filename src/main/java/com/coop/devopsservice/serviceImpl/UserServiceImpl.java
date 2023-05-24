@@ -44,8 +44,8 @@ public class UserServiceImpl implements UserService {
     }
     
     @Override
-    public List<UserIdAndUserName> findUsersOnlyIdAndName() {    // 查找用户的id和名字
-        return userMapper.findUsersOnlyIdAndName();
+    public List<UserIdAndUserName> findUsersOnlyIdAndName(String projectId) {    // 查找用户的id和名字
+        return userMapper.findUsersOnlyIdAndName(projectId);
     }
     
     @Override

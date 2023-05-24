@@ -15,8 +15,8 @@ import java.util.List;
 
 public interface EpicService {
 
-    List<Epic> findEpics();
-    List<EpicIdAndEpicName> findEpicsOnlyIdAndName();
+    List<Epic> findEpics(String projectId);
+    List<EpicIdAndEpicName> findEpicsOnlyIdAndName(String projectId);
     Epic findEpicById(String epicId);
     int addEpic(Epic epic);
     int deleteEpicById(String epicId);

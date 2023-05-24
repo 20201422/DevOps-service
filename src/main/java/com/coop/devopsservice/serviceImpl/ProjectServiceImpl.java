@@ -38,8 +38,8 @@ public class ProjectServiceImpl implements ProjectService {
     }
     
     @Override
-    public List<Project> findProjects() {   // 查找所有用户
-        return projectMapper.findProjects();
+    public List<Project> findProjects(String userId) {   // 查找所有用户
+        return projectMapper.findProjects(userId);
     }
     
     @Override

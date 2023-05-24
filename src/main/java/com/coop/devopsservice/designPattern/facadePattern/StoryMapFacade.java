@@ -39,7 +39,7 @@ public class StoryMapFacade extends AbstractStoryMapFacade {
         
         List<EpicList> epicLists = new ArrayList<>();
         
-        List<Epic> epics =  epicService.findEpics();    // 查找所有史诗
+        List<Epic> epics =  epicService.findEpics(projectId);    // 查找所有史诗
         
         for (Epic epic : epics) {
             List<Question> questions = questionService.findQuestionsByEpicId(epic.getEpicId()); // 根据史诗查找问题

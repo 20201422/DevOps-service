@@ -44,10 +44,10 @@ public class UserController {
         return ApiResultHandler.success(userService.findUsers());
     }
     
-    @GetMapping("/users/idAndName")
-    public ApiResult findUsersOnlyIdAndName() { // 查找用户的id和名字
+    @GetMapping("/users/idAndName/{projectId}")
+    public ApiResult findUsersOnlyIdAndName(@PathVariable("projectId") String projectId) { // 查找用户的id和名字
         System.out.println("查询用户的id和名字");
-        return ApiResultHandler.success(userService.findUsersOnlyIdAndName());
+        return ApiResultHandler.success(userService.findUsersOnlyIdAndName(projectId));
     }
     
     @GetMapping("/{userId}")
