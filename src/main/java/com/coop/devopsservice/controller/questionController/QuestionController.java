@@ -8,11 +8,11 @@
 
 package com.coop.devopsservice.controller.questionController;
 
-import com.coop.devopsservice.designPattern.factoryPattern.FastModel;
-import com.coop.devopsservice.designPattern.factoryPattern.FastModelFactory;
-import com.coop.devopsservice.designPattern.factoryPattern.FastQuestionFactory;
-import com.coop.devopsservice.designPattern.flyweightPattern.QuestionFactory;
-import com.coop.devopsservice.designPattern.statePattern.EpicState;
+import com.coop.devopsservice.designPattern.kp_factoryPattern.FastModel;
+import com.coop.devopsservice.designPattern.kp_factoryPattern.FastModelFactory;
+import com.coop.devopsservice.designPattern.kp_factoryPattern.FastQuestionFactory;
+import com.coop.devopsservice.designPattern.kp_flyweightPattern.QuestionFactory;
+import com.coop.devopsservice.designPattern.kp_statePattern.EpicState;
 import com.coop.devopsservice.entity.ApiResult;
 import com.coop.devopsservice.entity.epicEntity.Epic;
 import com.coop.devopsservice.entity.questionEntity.Question;

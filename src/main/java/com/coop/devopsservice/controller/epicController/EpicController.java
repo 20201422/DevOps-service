@@ -8,7 +8,7 @@
 
 package com.coop.devopsservice.controller.epicController;
 
-import com.coop.devopsservice.designPattern.statePattern.EpicState;
+import com.coop.devopsservice.designPattern.kp_statePattern.EpicState;
 import com.coop.devopsservice.entity.ApiResult;
 import com.coop.devopsservice.entity.epicEntity.Epic;
 import com.coop.devopsservice.entity.questionEntity.Question;

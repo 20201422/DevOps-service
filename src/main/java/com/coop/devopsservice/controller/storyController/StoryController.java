@@ -8,8 +8,8 @@
 
 package com.coop.devopsservice.controller.storyController;
 
-import com.coop.devopsservice.designPattern.facadePattern.AbstractStoryMapFacade;
-import com.coop.devopsservice.designPattern.facadePattern.StoryMapFacade;
+import com.coop.devopsservice.designPattern.kp_facadePattern.AbstractStoryMapFacade;
+import com.coop.devopsservice.designPattern.kp_facadePattern.StoryMapFacade;
 import com.coop.devopsservice.entity.ApiResult;
 import com.coop.devopsservice.util.ApiResultHandler;
 import org.springframework.beans.factory.annotation.Autowired;
