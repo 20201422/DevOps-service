@@ -32,4 +32,9 @@ public interface IterationMapper {
     @Select("select * from iteration where iterationState ='已开启' ")
     Iteration findOpenedIteration();
 
+    @Update("update iteration set iterationState = '未开启' where iterationId = #{iterationId}")
+    int closeIteration(int iterationId);
+    @Update("update iteration set iterationState = '已开启' where iterationId = #{iterationId}")
+    int openIteration(int iterationId);
+
 }

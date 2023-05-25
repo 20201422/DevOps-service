@@ -5,6 +5,7 @@ import com.coop.devopsservice.entity.iterationEntity.Iteration;
 import com.coop.devopsservice.serviceImpl.IterationServiceImpl;
 import com.coop.devopsservice.serviceImpl.QuestionServiceImpl;
 import com.coop.devopsservice.util.ApiResultHandler;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -58,6 +59,15 @@ public class IterationController {
     @GetMapping("/findQuestionByIterationId/{iterationId}")
     public ApiResult findQuestionByIterationId(@PathVariable("iterationId") int iterationId){
         return ApiResultHandler.success(questionService.findQuestionByIterationId(iterationId));
+    }
+    @GetMapping("/close/{iterationId}")
+    public ApiResult closeIteration(@PathVariable("iterationId") int iterationId){
+        System.out.println("关闭迭代");
+        return ApiResultHandler.success(iterationService.closeIteration(iterationId));
+    }
+    @GetMapping("/open/{iterationId}")
+    public ApiResult openIteration(@PathVariable("iterationId") int iterationId){
+        return ApiResultHandler.success(iterationService.openIteration(iterationId));
     }
 
     public IterationServiceImpl getIterationService() {

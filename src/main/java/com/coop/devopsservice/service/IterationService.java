@@ -14,4 +14,7 @@ public interface IterationService {
     public int findIdByName(String iterationName);
     public Iteration findOpenedIteration();
 
+    int closeIteration(int iterationId);
+    int openIteration(int iterationId);
+
 }

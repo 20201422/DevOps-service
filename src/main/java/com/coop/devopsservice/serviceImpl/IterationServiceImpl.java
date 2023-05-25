@@ -58,6 +58,16 @@ public class IterationServiceImpl implements IterationService {
         return iterationMapper.findOpenedIteration();
     }
 
+    @Override
+    public int closeIteration(int iterationId) {
+        return iterationMapper.closeIteration(iterationId);
+    }
+
+    @Override
+    public int openIteration(int iterationId) {
+        return iterationMapper.openIteration(iterationId);
+    }
+
 
     public IterationMapper getIterationMapper() {
         return iterationMapper;
