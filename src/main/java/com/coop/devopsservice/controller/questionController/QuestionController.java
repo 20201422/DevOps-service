@@ -124,8 +124,8 @@ public class QuestionController {
         return ApiResultHandler.success(questionService.updateQuestion(question));
     }
     
-    @PutMapping("/update/state")
-    public ApiResult updateQuestionState(String questionId, String state, String projectId) { // 更新问题的状态
+    @GetMapping("/update/state")
+    public ApiResult updateQuestionState(@RequestParam("questionId") String questionId, @RequestParam("state")String state,@RequestParam("projectId") String projectId) { // 更新问题的状态
         System.out.println("更新问题的状态");
         Question question = questionService.findQuestionById(questionId, projectId);   // 找到问题
         
