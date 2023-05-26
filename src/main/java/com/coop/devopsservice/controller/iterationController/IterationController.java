@@ -62,6 +62,7 @@ public class IterationController {
     }
     @GetMapping("/findQuestionByIterationId/{iterationId}")
     public ApiResult findQuestionByIterationId(@PathVariable("iterationId") int iterationId){
+        System.out.println("迭代id："+iterationId);
         return ApiResultHandler.success(questionService.findQuestionByIterationId(iterationId));
     }
     @GetMapping("/close/{iterationId}")
@@ -72,6 +73,10 @@ public class IterationController {
     @GetMapping("/open/{iterationId}")
     public ApiResult openIteration(@PathVariable("iterationId") int iterationId){
         return ApiResultHandler.success(iterationService.openIteration(iterationId));
+    }
+    @GetMapping("/getFreeQuestion/{projectId}")
+    public ApiResult findQuestionFree(@PathVariable("projectId") String projectId){
+        return ApiResultHandler.success(questionService.findQuestionFree(projectId));
     }
 
     public IterationServiceImpl getIterationService() {

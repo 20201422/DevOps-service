@@ -42,7 +42,12 @@ public class QuestionServiceImpl implements QuestionService {
     public List<ShowQuestions> findQuestions(String projectId) { // 查找所有问题
         return questionMapper.findQuestions(projectId);
     }
-    
+
+    @Override
+    public List<ShowQuestions> findQuestionFree(String projectId) {
+        return questionMapper.findQuestionFree(projectId);
+    }
+
     @Override
     public Question findQuestionById(String questionId, String projectId) {   // 查找一个问题根据id
         return questionMapper.findQuestionById(questionId, projectId);

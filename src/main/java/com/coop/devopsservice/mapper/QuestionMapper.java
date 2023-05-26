@@ -22,6 +22,11 @@ public interface QuestionMapper {
             "left outer join user on question.userId = user.userId\n" +
             "where projectId = #{projectId}")
     List<ShowQuestions> findQuestions(String projectId); // 查找所有问题
+    @Select("select question.*, userName\n" +
+            "from question\n" +
+            "left outer join user on question.userId = user.userId\n" +
+            "where projectId = #{projectId} and iterationId is null")
+    List<ShowQuestions> findQuestionFree(String projectId);  //查询所有没有进迭代的问题
 
     @Select("select * from question where questionId = #{questionId} and projectId = #{projectId}")
     Question findQuestionById(String questionId, String projectId);   // 查找某一个问题根据id
