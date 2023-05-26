@@ -8,7 +8,8 @@ import java.util.List;
 public interface IterationMapper {
     @Select("select * from iteration")
     List<Iteration> findIterations();   //查询所有迭代
-
+    @Select("select * from iteration where projectId = #{projectId}")
+    List<Iteration> findIterationsByProjectId(String projectId);
     @Select("select * from iteration where iterationId = #{iterationId}")
     Iteration findIterationById(int iterationId);   //根据id查询迭代
 
@@ -29,8 +30,8 @@ public interface IterationMapper {
     int addQuestionToIterationById(String questionId,int iterationId);   //将对应问题添加进对应迭代，即更新问题表的iterationId
     @Select("select iterationId from iteration where iterationName = #{iterationName}")
     int findIdByName(String iterationName);  //根据名字查id
-    @Select("select * from iteration where iterationState ='已开启' ")
-    Iteration findOpenedIteration();
+    @Select("select * from iteration where iterationState ='已开启' and projectId = #{projectId} ")
+    Iteration findOpenedIteration(String projectId);
 
     @Update("update iteration set iterationState = '未开启' where iterationId = #{iterationId}")
     int closeIteration(int iterationId);

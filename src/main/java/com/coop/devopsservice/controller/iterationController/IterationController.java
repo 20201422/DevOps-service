@@ -27,6 +27,10 @@ public class IterationController {
         System.out.println("查询全部迭代");
         return ApiResultHandler.success(iterationService.findIterations());
     }
+    @GetMapping("/iterations/{projectId}")
+    public ApiResult findIterationsByProjectId(@PathVariable("projectId") String projectId){
+        return ApiResultHandler.success(iterationService.findIterationsByProjectId(projectId));
+    }
     @PostMapping("/add")
     public ApiResult addIteration(@RequestBody Iteration iteration){   //添加迭代
         System.out.println("添加迭代");
@@ -47,9 +51,9 @@ public class IterationController {
     public ApiResult findIdByName(@PathVariable("iterationName") String iterationName){
         return ApiResultHandler.success(iterationService.findIdByName(iterationName));
     }
-    @GetMapping("/getOpenedIteration")
-    public ApiResult findOpenedIteration(){
-        return ApiResultHandler.success(iterationService.findOpenedIteration());
+    @GetMapping("/getOpenedIteration/{projectId}")
+    public ApiResult findOpenedIteration(@PathVariable("projectId") String projectId){
+        return ApiResultHandler.success(iterationService.findOpenedIteration(projectId));
 
     }
     @GetMapping("/findQuestionsByState/{iterationId}/{questionState}")

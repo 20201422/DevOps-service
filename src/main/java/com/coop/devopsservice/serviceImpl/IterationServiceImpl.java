@@ -24,6 +24,11 @@ public class IterationServiceImpl implements IterationService {
     }
 
     @Override
+    public List<Iteration> findIterationsByProjectId(String projectId) {
+        return iterationMapper.findIterationsByProjectId(projectId);
+    }
+
+    @Override
     public Iteration findIterationById(int iterationId) {
         return iterationMapper.findIterationById(iterationId);
     }
@@ -54,8 +59,8 @@ public class IterationServiceImpl implements IterationService {
     }
 
     @Override
-    public Iteration findOpenedIteration() {
-        return iterationMapper.findOpenedIteration();
+    public Iteration findOpenedIteration(String projectId) {
+        return iterationMapper.findOpenedIteration(projectId);
     }
 
     @Override
