@@ -14,9 +14,10 @@ import com.coop.devopsservice.entity.questionEntity.ShowQuestions;
 import java.util.List;
 
 public interface QuestionService {
-    
+
     List<ShowQuestions> findQuestions(String projectId);
     List<ShowQuestions> findQuestionFree(String projectId);
+    Question findQuestionByIndex(int questionIndex);
     Question findQuestionById(String questionId, String projectId);
     int addQuestion(Question question);
     int deleteQuestionById(String questionId, String projectId);

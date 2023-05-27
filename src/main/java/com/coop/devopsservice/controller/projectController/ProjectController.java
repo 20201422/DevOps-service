@@ -19,51 +19,51 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("project")
 public class ProjectController {
-    
+
     private ProjectServiceImpl projectService;
-    
+
     public ProjectController() {
     }
-    
+
     @Autowired
     public ProjectController(ProjectServiceImpl projectService) {
         this.projectService = projectService;
     }
-    
+
     public ProjectServiceImpl getProjectService() {
         return projectService;
     }
-    
+
     public void setProjectService(ProjectServiceImpl projectService) {
         this.projectService = projectService;
     }
-    
+
     @GetMapping("/projects/{userId}")
-    public ApiResult findProjects(@PathVariable("userId") String userId) {    // 查找全部项目
+    public ApiResult<?> findProjects(@PathVariable("userId") String userId) {    // 查找全部项目
         System.out.println("查询全部项目");
         return ApiResultHandler.success(projectService.findProjects(userId));
     }
-    
+
     @GetMapping("/{projectId}")
-    public ApiResult findProjectById(@PathVariable("projectId") String projectId) {  // 根据id查找项目
+    public ApiResult<?> findProjectById(@PathVariable("projectId") String projectId) {  // 根据id查找项目
         System.out.println("根据ID查找项目");
         return ApiResultHandler.success(projectService.findProjectById(projectId));
     }
-    
+
     @PostMapping("/add")
-    public ApiResult addProject(Project project) {    // 添加一个项目
+    public ApiResult<?> addProject(Project project) {    // 添加一个项目
         System.out.println("添加项目");
         return ApiResultHandler.success(projectService.addProject(project));
     }
-    
+
     @DeleteMapping("/delete/{questionId}")
-    public ApiResult deleteProjectById(@PathVariable("questionId") String projectId) {    // 删除一个项目
+    public ApiResult<?> deleteProjectById(@PathVariable("questionId") String projectId) {    // 删除一个项目
         System.out.println("删除项目");
         return ApiResultHandler.success(projectService.deleteProjectById(projectId));
     }
-    
+
     @PutMapping("/update")
-    public ApiResult updateProject(Project project) {    // 更新项目
+    public ApiResult<?> updateProject(Project project) {    // 更新项目
         System.out.println("更新项目");
         return ApiResultHandler.success(projectService.updateProject(project));
     }

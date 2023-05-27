@@ -112,6 +112,13 @@
             <version>2.9.2</version>
         </dependency>
 
+        <!-- 简单缓存实现 hutool-core 核心,包括Bean操作、日期、文件等各种Util hutool-cron 定时任务模块 -->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.8.9</version>
+        </dependency>
+
     </dependencies>
 
 

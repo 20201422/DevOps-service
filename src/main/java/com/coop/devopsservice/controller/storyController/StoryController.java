@@ -21,32 +21,32 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("story")
 public class StoryController {
-    
+
     private AbstractStoryMapFacade storyMapFacade = new StoryMapFacade();
-    
+
     public StoryController() {
     }
-    
+
     @Autowired
     public StoryController(AbstractStoryMapFacade storyMapFacade) {
         this.storyMapFacade = storyMapFacade;
     }
-    
+
     public AbstractStoryMapFacade getStoryMapFacade() {
         return storyMapFacade;
     }
-    
+
     public void setStoryMapFacade(AbstractStoryMapFacade storyMapFacade) {
         this.storyMapFacade = storyMapFacade;
     }
-    
+
     @GetMapping("/{projectId}")
-    public ApiResult showStoryMap(@PathVariable("projectId") String projectId) {    // 查找故事地图
+    public ApiResult<?> showStoryMap(@PathVariable("projectId") String projectId) {    // 查找故事地图
         System.out.println("查询故事地图");
-        
+
         return ApiResultHandler.success(storyMapFacade.getStoryMap(projectId));
     }
-    
+
 }
 
 //    may the force be with you.

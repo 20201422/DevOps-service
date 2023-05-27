@@ -19,58 +19,58 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/user")
 public class UserController {
-    
+
     private UserServiceImpl userService;
-    
+
     public UserController() {
     }
-    
+
     @Autowired
     public UserController(UserServiceImpl userService) {
         this.userService = userService;
     }
-    
+
     public UserServiceImpl getUserService() {
         return userService;
     }
-    
+
     public void setUserService(UserServiceImpl userService) {
         this.userService = userService;
     }
-    
+
     @GetMapping("/users")
-    public ApiResult findUsers() {    // 查找全部用户
+    public ApiResult<?> findUsers() {    // 查找全部用户
         System.out.println("查询全部用户");
         return ApiResultHandler.success(userService.findUsers());
     }
-    
+
     @GetMapping("/users/idAndName/{projectId}")
-    public ApiResult findUsersOnlyIdAndName(@PathVariable("projectId") String projectId) { // 查找用户的id和名字
+    public ApiResult<?> findUsersOnlyIdAndName(@PathVariable("projectId") String projectId) { // 查找用户的id和名字
         System.out.println("查询用户的id和名字");
         return ApiResultHandler.success(userService.findUsersOnlyIdAndName(projectId));
     }
-    
+
     @GetMapping("/{userId}")
-    public ApiResult findUserById(@PathVariable("userId") String userId) {  // 根据id查找用户
+    public ApiResult<?> findUserById(@PathVariable("userId") String userId) {  // 根据id查找用户
         System.out.println("根据ID查找用户");
         return ApiResultHandler.success(userService.findUserById(userId));
     }
-    
+
     @PostMapping("/add")
-    public ApiResult addUser(User user){    // 添加一个用户
+    public ApiResult<?> addUser(User user){    // 添加一个用户
         System.out.println("添加用户");
         user.setUserPassword(DigestUtils.md5DigestAsHex(user.getUserPassword().getBytes()));    // MD5加密
         return ApiResultHandler.success(userService.addUser(user));
     }
-    
+
     @DeleteMapping("/delete/{userId}")
-    public ApiResult deleteUserById(@PathVariable("userId") String userId) {    // 删除一个用户
+    public ApiResult<?> deleteUserById(@PathVariable("userId") String userId) {    // 删除一个用户
         System.out.println("删除用户");
         return ApiResultHandler.success(userService.deleteById(userId));
     }
-    
+
     @PutMapping("/update")
-    public ApiResult updateUser(User user) {    // 更新用户
+    public ApiResult<?> updateUser(User user) {    // 更新用户
         System.out.println("更新用户");
         user.setUserPassword(DigestUtils.md5DigestAsHex(user.getUserPassword().getBytes()));    // MD5加密
         return ApiResultHandler.success(userService.updateUser(user));

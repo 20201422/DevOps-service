@@ -17,6 +17,7 @@ public interface EpicService {
 
     List<Epic> findEpics(String projectId);
     List<EpicIdAndEpicName> findEpicsOnlyIdAndName(String projectId);
+    Epic findEpicByIndex(int epicIndex);
     Epic findEpicById(String epicId, String projectId);
     int addEpic(Epic epic);
     int deleteEpicById(String epicId, String projectId);
