@@ -51,11 +51,11 @@ public class FileDatabaseController {
         return ApiResultHandler.success(fileService.addFile(file));
     }
 
-    @DeleteMapping("/deleteFile/{fileId}")
-    public ApiResult<?> delete(@PathVariable int fileId) {
+    @DeleteMapping("/deleteFile/{filePath}")
+    public ApiResult<?> delete(@PathVariable String filePath) {
         System.out.println("删除文件");
 
-        return ApiResultHandler.success(fileService.deleteFile(fileId));
+        return ApiResultHandler.success(fileService.deleteFile(filePath));
     }
 
     @PutMapping("/updateFile/{modelId}/{fileId}")

@@ -53,8 +53,8 @@ public class FileServiceImpl implements FileService {
     }
 
     @Override
-    public int deleteFile(int fileId) {
-        return fileMapper.deleteFile(fileId);
+    public int deleteFile(String filePath) {
+        return fileMapper.deleteFile(filePath);
     }
 
     @Override

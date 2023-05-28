@@ -17,7 +17,7 @@ public interface FileService {
     List<FileEntity> findFiles(String projectId);
     List<FileEntity> findFilesByQuestion(String projectId, String modelId);
     int addFile(FileEntity file);
-    int deleteFile(int fileId);
+    int deleteFile(String filePath);
     int updateFile(String modelId, int fileId);
 
 }

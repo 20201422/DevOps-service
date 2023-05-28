@@ -126,7 +126,7 @@ public class QuestionController {
         List<FileEntity> files = fileService.findFilesByQuestion(projectId, questionId); // 找到问题的所有文件
 
         for (FileEntity file : files) { // 删除该问题下的文件
-            fileService.deleteFile(file.getFileId());
+            fileService.deleteFile(file.getFilePath());
             new FileController().delete(file.getFilePath(), file.getProjectId());
         }
 
