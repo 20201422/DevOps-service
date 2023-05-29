@@ -14,15 +14,18 @@ public class FastQuestionBuilderQuestion extends BuilderQuestion {
     private String questionName;
     private String questionPriority;
     private String userId;
+    private String projectId;
     
     public FastQuestionBuilderQuestion() {
     }
     
-    public FastQuestionBuilderQuestion(String questionId, String questionName, String questionPriority, String userId) {
+    public FastQuestionBuilderQuestion(String questionId, String questionName, String questionPriority,
+                                       String userId, String projectId) {
         this.questionId = questionId;
         this.questionName = questionName;
         this.questionPriority = questionPriority;
         this.userId = userId;
+        this.projectId = projectId;
     }
     
     public String getQuestionId() {
@@ -57,6 +60,14 @@ public class FastQuestionBuilderQuestion extends BuilderQuestion {
         this.userId = userId;
     }
     
+    public String getProjectId() {
+        return projectId;
+    }
+    
+    public void setProjectId(String projectId) {
+        this.projectId = projectId;
+    }
+    
     @Override
     public void buildQuestionId() {
         question.setQuestionId(questionId);
@@ -75,6 +86,11 @@ public class FastQuestionBuilderQuestion extends BuilderQuestion {
     @Override
     public void buildUserId() {
         question.setUserId(userId);
+    }
+    
+    @Override
+    public void buildProjectId() {
+        question.setProjectId(projectId);
     }
     
     @Override

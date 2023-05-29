@@ -109,10 +109,11 @@ public class QuestionController {
 
     @PostMapping("/fastAdd")
     public ApiResult<?> addFastQuestion(String questionId, String questionName,
-                                     String questionPriority, String userId) {   // 快速添加一个问题
+                                     String questionPriority, String userId, String projectId) {   // 快速添加一个问题
         System.out.println("快速添加问题");
 
-        FastModelFactory fastQuestionFactory = new FastQuestionFactory(questionId, questionName, questionPriority, userId);
+        FastModelFactory fastQuestionFactory =
+                new FastQuestionFactory(questionId, questionName, questionPriority, userId, projectId);
         FastModel fastQuestion = fastQuestionFactory.createFastModel();
         Question question = (Question) fastQuestion.addFastModel();
 
@@ -120,7 +121,8 @@ public class QuestionController {
     }
 
     @DeleteMapping("/delete/{questionId}/{projectId}")
-    public ApiResult<?> deleteQuestionById(@PathVariable("questionId") String questionId, @PathVariable("projectId") String projectId) {    // 删除一个问题
+    public ApiResult<?> deleteQuestionById(@PathVariable("questionId") String questionId,
+                                           @PathVariable("projectId") String projectId) {    // 删除一个问题
         System.out.println("删除问题");
 
         List<FileEntity> files = fileService.findFilesByQuestion(projectId, questionId); // 找到问题的所有文件
@@ -157,7 +159,9 @@ public class QuestionController {
     }
 
     @GetMapping("/update/state")
-    public ApiResult<?> updateQuestionState(@RequestParam("questionId") String questionId, @RequestParam("state")String state,@RequestParam("projectId") String projectId) { // 更新问题的状态
+    public ApiResult<?> updateQuestionState(@RequestParam("questionId") String questionId,
+                                            @RequestParam("state")String state,
+                                            @RequestParam("projectId") String projectId) { // 更新问题的状态
         System.out.println("更新问题的状态");
         Question question = questionService.findQuestionById(questionId, projectId);   // 找到问题
 

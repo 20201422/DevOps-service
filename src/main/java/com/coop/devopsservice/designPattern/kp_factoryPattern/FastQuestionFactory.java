@@ -14,15 +14,18 @@ public class FastQuestionFactory implements FastModelFactory {
     private String questionName;
     private String questionPriority;
     private String userId;
+    private String projectId;
     
     public FastQuestionFactory() {
     }
     
-    public FastQuestionFactory(String questionId, String questionName, String questionPriority, String userId) {
+    public FastQuestionFactory(String questionId, String questionName, String questionPriority,
+                               String userId, String projectId) {
         this.questionId = questionId;
         this.questionName = questionName;
         this.questionPriority = questionPriority;
         this.userId = userId;
+        this.projectId = projectId;
     }
     
     public String getQuestionId() {
@@ -57,9 +60,17 @@ public class FastQuestionFactory implements FastModelFactory {
         this.userId = userId;
     }
     
+    public String getProjectId() {
+        return projectId;
+    }
+    
+    public void setProjectId(String projectId) {
+        this.projectId = projectId;
+    }
+    
     @Override
     public FastModel createFastModel() {
-        return new FastQuestion(questionId, questionName, questionPriority, userId);
+        return new FastQuestion(questionId, questionName, questionPriority, userId, projectId);
     }
 }
 

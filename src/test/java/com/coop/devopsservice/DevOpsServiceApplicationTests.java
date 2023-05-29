@@ -31,14 +31,10 @@ class DevOpsServiceApplicationTests {
 //        User user = new User("20201423", "瑞祥", "123456", "组员", "rx.jpeg");
 //        ApiResult apiResult = userController.updateUser(user);
 //        assertEquals(200, apiResult.getCode());
-
-//        Epic epic = new Epic(6, "613", "12", "", "低", "已实现", "2428");
         
-        Question question = new Question(19, "1222", "abc", "", "低", "规划中", "", "", "2428", "", "612", "1");
-        
-        ApiResult api = questionController.updateQuestionSequence(question);
+        ApiResult api = questionController.addFastQuestion("2429-3-2", "工厂模式",
+                "低", "20201422", "2429");
         assertEquals(200, api.getCode());
-        
     }
     
 }

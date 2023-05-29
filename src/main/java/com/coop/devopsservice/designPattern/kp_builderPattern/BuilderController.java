@@ -21,6 +21,7 @@ public class BuilderController {
         builderQuestion.buildQuestionName();
         builderQuestion.buildQuestionPriority();
         builderQuestion.buildUserId();
+        builderQuestion.buildProjectId();
         builderQuestion.buildQuestionState();
         
         return builderQuestion.createQuestion();
