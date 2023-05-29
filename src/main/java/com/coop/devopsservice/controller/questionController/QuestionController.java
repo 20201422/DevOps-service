@@ -111,16 +111,14 @@ public class QuestionController {
         return ApiResultHandler.success();
     }
 
-    @PostMapping("/fastAdd")
-    public ApiResult<?> addFastQuestion(String questionId, String questionName,
-                                     String questionPriority, String userId, String projectId) {   // 快速添加一个问题
-        System.out.println("快速添加问题");
-
+    @GetMapping("/fastAdd")
+    public ApiResult<?> addFastQuestion(@RequestParam("questionId") String questionId, @RequestParam("questionName")String questionName,
+                                        @RequestParam("questionPriority")String questionPriority,@RequestParam("userId") String userId,
+                                        @RequestParam("iterationId")int iterationId,@RequestParam("projectId")String projectId) {   // 快速添加一个问题
         FastModelFactory fastQuestionFactory =
-                new FastQuestionFactory(questionId, questionName, questionPriority, userId, projectId);
+                new FastQuestionFactory(questionId, questionName, questionPriority, userId,iterationId , projectId);
         FastModel fastQuestion = fastQuestionFactory.createFastModel();
         Question question = (Question) fastQuestion.addFastModel();
-
         return ApiResultHandler.success(questionService.addQuestion(question));
     }
 
