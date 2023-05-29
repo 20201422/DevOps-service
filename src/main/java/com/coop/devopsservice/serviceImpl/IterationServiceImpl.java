@@ -1,5 +1,10 @@
 package com.coop.devopsservice.serviceImpl;
 
+import com.coop.devopsservice.designPattern.lrx_ProxyPattern.ProxyOpenIteration;
+import com.coop.devopsservice.designPattern.lrx_commandPattern.AddQuestionCommand;
+import com.coop.devopsservice.designPattern.lrx_commandPattern.Command;
+import com.coop.devopsservice.designPattern.lrx_observerPattern.ConcreteIterationState;
+import com.coop.devopsservice.designPattern.lrx_observerPattern.IterationState;
 import com.coop.devopsservice.entity.iterationEntity.Iteration;
 import com.coop.devopsservice.mapper.IterationMapper;
 import com.coop.devopsservice.service.IterationService;
@@ -50,7 +55,8 @@ public class IterationServiceImpl implements IterationService {
 
     @Override
     public int addQuestionToIterationById(String questionId, int iterationId) {
-        return iterationMapper.addQuestionToIterationById(questionId, iterationId);
+        Command addQuestionCmd = new AddQuestionCommand(questionId,iterationId,iterationMapper);  //获取添加问题命令
+        return addQuestionCmd.execute();   //执行命令
     }
 
     @Override
@@ -65,12 +71,20 @@ public class IterationServiceImpl implements IterationService {
 
     @Override
     public int closeIteration(int iterationId) {
-        return iterationMapper.closeIteration(iterationId);
+        IterationState iterationState = new ConcreteIterationState(iterationId,iterationMapper);
+        return iterationState.closeIterationState();   //关闭迭代
+        //return iterationMapper.closeIteration(iterationId);
     }
 
     @Override
     public int openIteration(int iterationId) {
-        return iterationMapper.openIteration(iterationId);
+        IterationState iterationState = new ConcreteIterationState(iterationId,iterationMapper);
+        //定义代理开启对象
+        ProxyOpenIteration proxyOpenIteration = new ProxyOpenIteration(iterationState,iterationMapper,"2427");
+        return proxyOpenIteration.open();
+
+        //return iterationState.openIterationState();
+        //return iterationMapper.openIteration(iterationId);
     }
 
 

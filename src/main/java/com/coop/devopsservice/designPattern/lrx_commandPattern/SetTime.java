@@ -1,7 +1,9 @@
 package com.coop.devopsservice.designPattern.lrx_commandPattern;
 
+import com.coop.devopsservice.mapper.IterationMapper;
+
 public class SetTime {
-    public void doAction(){
-        System.out.println("组长设置了迭代时间");
+    public int doAction(int iterationId, String startTime, String endTime, IterationMapper iterationMapper){
+        return iterationMapper.setTime(iterationId,startTime,endTime);
     }
 }

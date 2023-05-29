@@ -37,5 +37,9 @@ public interface IterationMapper {
     int closeIteration(int iterationId);
     @Update("update iteration set iterationState = '已开启' where iterationId = #{iterationId}")
     int openIteration(int iterationId);
+    @Update("update iteration set startTime = #{startTime},endTime = #{endTime} where iterationId = #{iterationId}")
+    int setTime(int iterationId, String startTime, String endTime);
 
+    @Select("SELECT COUNT(*) FROM iteration WHERE iterationState = '已开启' AND projectId = #{projectId}")
+    int getOpenedCount(String projectId);
 }

@@ -8,6 +8,7 @@
 
 package com.coop.devopsservice.serviceImpl;
 
+import com.coop.devopsservice.designPattern.lrx_singtonPattern.ProjectManager;
 import com.coop.devopsservice.entity.projectEntity.Project;
 import com.coop.devopsservice.mapper.ProjectMapper;
 import com.coop.devopsservice.service.ProjectService;
@@ -39,7 +40,8 @@ public class ProjectServiceImpl implements ProjectService {
     
     @Override
     public List<Project> findProjects(String userId) {   // 查找所有用户
-        return projectMapper.findProjects(userId);
+        ProjectManager projectManager = ProjectManager.getInstance();  //获取单例对象
+        return projectManager.showAllProjects(userId,projectMapper);
     }
     
     @Override

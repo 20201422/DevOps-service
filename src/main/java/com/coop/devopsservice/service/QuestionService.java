@@ -17,6 +17,7 @@ public interface QuestionService {
 
     List<ShowQuestions> findQuestions(String projectId);
     List<ShowQuestions> findQuestionFree(String projectId);
+    List<ShowQuestions> findQuestionByStateAndPriority(String projectId,String questionState,String questionPriority);
     Question findQuestionByIndex(int questionIndex);
     Question findQuestionById(String questionId, String projectId);
     int addQuestion(Question question);
