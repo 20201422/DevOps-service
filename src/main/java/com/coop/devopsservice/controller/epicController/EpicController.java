@@ -116,7 +116,7 @@ public class EpicController {
         List<FileEntity> files = fileService.findFilesByQuestion(projectId, epicId); // 找到史诗的所有文件
 
         for (FileEntity file : files) { // 删除该史诗下的文件
-            fileService.deleteFile(file.getFileId());
+            fileService.deleteFile(file.getFilePath());
             new FileController().delete(file.getFilePath(), file.getProjectId());
         }
 

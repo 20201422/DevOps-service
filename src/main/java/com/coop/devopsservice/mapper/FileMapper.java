@@ -25,8 +25,8 @@ public interface FileMapper {
     @Insert("insert into file values(0, #{fileName}, #{filePath}, #{fileSize}, #{fileType}, #{projectId}, #{modelId})")
     int addFile(FileEntity file); // 添加一个文件
 
-    @Delete("delete from file where fileId = #{fileId}")
-    int deleteFile(int fileId);  // 删除一个文件
+    @Delete("delete from file where filePath = #{filePath}")
+    int deleteFile(String filePath);  // 删除一个文件
 
     @Update("update file set modelId = #{modelId} where fileId = #{fileId}")
     int updateFile(String modelId, int fileId);    // 更新一个文件的问题/史诗id
