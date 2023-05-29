@@ -1,5 +1,7 @@
 package com.coop.devopsservice.controller.iterationController;
 
+import com.coop.devopsservice.designPattern.lrx_observerPattern.ConcreteIterationState;
+import com.coop.devopsservice.designPattern.lrx_observerPattern.IterationState;
 import com.coop.devopsservice.entity.ApiResult;
 import com.coop.devopsservice.entity.iterationEntity.Iteration;
 import com.coop.devopsservice.serviceImpl.IterationServiceImpl;

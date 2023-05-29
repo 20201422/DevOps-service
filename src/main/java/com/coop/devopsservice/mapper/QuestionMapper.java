@@ -27,7 +27,11 @@ public interface QuestionMapper {
             "left outer join user on question.userId = user.userId\n" +
             "where projectId = #{projectId} and iterationId is null")
     List<ShowQuestions> findQuestionFree(String projectId);  //查询所有没有进迭代的问题
-
+    @Select("select question.*, userName\n" +
+            "from question\n" +
+            "left outer join user on question.userId = user.userId\n" +
+            "where projectId = #{projectId} and questionState = #{questionState} and questionPriority = #{questionPriority}")
+    List<ShowQuestions> findQuestionByStateAndPriority(String projectId,String questionState,String questionPriority);  //根据问题的状态和优先级查询问题,用于桥接模式
     @Select("select * from question where questionIndex = #{questionIndex}")
     Question findQuestionByIndex(int questionIndex);  // 查找某一个问题根据index
 

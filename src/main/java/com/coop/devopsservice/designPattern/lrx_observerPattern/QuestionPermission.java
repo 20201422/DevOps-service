@@ -1,20 +1,28 @@
 package com.coop.devopsservice.designPattern.lrx_observerPattern;
 
-public class QuestionPermission implements Observer{
-    private String name ;
-    private String  permission= "不可操作";
+import com.coop.devopsservice.mapper.IterationMapper;
 
-    public QuestionPermission(String name) {
-        this.name = name;
+public class QuestionPermission implements Observer{
+    private String questionId ;
+
+    public QuestionPermission(String questionId) {
+        this.questionId = questionId;
     }
 
     @Override
-    public void changePermission(String iterationState) {
+    public void changePermission(String questionId, String iterationState, IterationMapper iterationMapper) {
         if(iterationState.equals("已开启")){
-            this.permission = "可操作";
+            System.out.println(questionId+"权限变更：可操作");//将问题的状态变为可操作
         }else {
-            this.permission = "不可操作";
+            System.out.println(questionId+"权限变更：不可操作");//将问题的状态变为不可操作
         }
-        System.out.println(name+"的权限为："+this.permission);
+    }
+
+    public String getQuestionId() {
+        return questionId;
+    }
+
+    public void setQuestionId(String questionId) {
+        this.questionId = questionId;
     }
 }

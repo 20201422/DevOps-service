@@ -8,6 +8,8 @@
 
 package com.coop.devopsservice.serviceImpl;
 
+import com.coop.devopsservice.designPattern.lrx_bridgePattern.Priority;
+import com.coop.devopsservice.designPattern.lrx_bridgePattern.QuestionFilter;
 import com.coop.devopsservice.entity.questionEntity.Question;
 import com.coop.devopsservice.entity.questionEntity.ShowQuestions;
 import com.coop.devopsservice.mapper.QuestionMapper;
@@ -52,6 +54,15 @@ public class QuestionServiceImpl implements QuestionService {
     @Override
     public List<ShowQuestions> findQuestionFree(String projectId) {
         return questionMapper.findQuestionFree(projectId);
+    }
+
+    @Override
+    public List<ShowQuestions> findQuestionByStateAndPriority(String projectId, String questionState, String questionPriority) {  //用于桥接模式
+        QuestionFilter questionFilter;
+        Priority priority;
+
+
+        return questionMapper.findQuestionByStateAndPriority(projectId,questionState,questionPriority);
     }
 
     @Override

@@ -1,31 +1,34 @@
 package com.coop.devopsservice.designPattern.lrx_observerPattern;
 
+import com.coop.devopsservice.mapper.IterationMapper;
+
 import java.util.ArrayList;
 
 public abstract class IterationState {
-    private String iterationName;
+    private int iterationId;
+    IterationMapper iterationMapper;
 
-    public IterationState(String iterationName) {
-        this.iterationName = iterationName;
+    public IterationState(int iterationId, IterationMapper iterationMapper) {
+        this.iterationId = iterationId;
+        this.iterationMapper = iterationMapper;
+        this.questions.add(new QuestionPermission("1"));
+        this.questions.add(new QuestionPermission("2"));
+        this.questions.add(new QuestionPermission("3"));
     }
 
-    private String iterationState = "未开启";
     protected ArrayList<Observer> questions = new ArrayList<Observer>();
     public void addToIteration(Observer observer){
         questions.add(observer);
     }
-    public void changeIterationState(String state){
-        if(this.iterationState!=state){   //只有当状态发送改变才通知
-            System.out.println("迭代的状态变为:"+state);
-            notifyObserver(state);
-        }
+    public int openIterationState(){
+        notifyObserver(this.iterationId,"已开启",iterationMapper);
+        return iterationMapper.openIteration(iterationId);
     }
-    public abstract void notifyObserver(String iterationState);
-    public String getIterationName() {
-        return iterationName;
-    }
+    public int closeIterationState(){
 
-    public void setIterationName(String iterationName) {
-        this.iterationName = iterationName;
+        notifyObserver(this.iterationId,"未开启",iterationMapper);
+        return iterationMapper.closeIteration(iterationId);
     }
+    public abstract void notifyObserver(int iterationId,String iterationState,IterationMapper iterationMapper);
+
 }

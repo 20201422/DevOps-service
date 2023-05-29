@@ -94,6 +94,10 @@ public class QuestionController {
         return ApiResultHandler.success(questionService.findQuestionById(questionId, projectId));
     }
 
+    public ApiResult findQuestionByStateAndPriority(String projectId,String questionState,String questionPriority){
+        return ApiResultHandler.success(questionService.findQuestionByStateAndPriority(projectId,questionState,questionPriority));
+    }
+
     @PostMapping("/add")
     public ApiResult<?> addQuestion(@RequestBody Question question) {    // 添加一个问题
         System.out.println("添加问题");
