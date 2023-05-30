@@ -18,6 +18,7 @@ public abstract class BuilderQuestion {
     public abstract void buildQuestionName();
     public abstract void buildQuestionPriority();
     public abstract void buildUserId();
+    public abstract void buildIterationId();
     public abstract void buildProjectId();
     public abstract void buildQuestionState();
     

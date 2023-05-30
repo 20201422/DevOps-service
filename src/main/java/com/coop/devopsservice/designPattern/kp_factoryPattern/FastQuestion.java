@@ -18,19 +18,21 @@ public class FastQuestion implements FastModel {
     private String questionName;
     private String questionPriority;
     private String userId;
+    private int iterationId;
     private String projectId;
     
     public FastQuestion() {
     }
-    
-    public FastQuestion(String questionId, String questionName, String questionPriority, String userId, String projectId) {
+
+    public FastQuestion(String questionId, String questionName, String questionPriority, String userId, int iterationId, String projectId) {
         this.questionId = questionId;
         this.questionName = questionName;
         this.questionPriority = questionPriority;
         this.userId = userId;
+        this.iterationId = iterationId;
         this.projectId = projectId;
     }
-    
+
     public String getQuestionId() {
         return questionId;
     }
@@ -62,7 +64,15 @@ public class FastQuestion implements FastModel {
     public void setUserId(String userId) {
         this.userId = userId;
     }
-    
+
+    public int getIterationId() {
+        return iterationId;
+    }
+
+    public void setIterationId(int iterationId) {
+        this.iterationId = iterationId;
+    }
+
     public String getProjectId() {
         return projectId;
     }
@@ -75,7 +85,7 @@ public class FastQuestion implements FastModel {
     public Object addFastModel() {
         
         BuilderQuestion builderQuestion
-                = new FastQuestionBuilderQuestion(questionId, questionName, questionPriority, userId, projectId);  // 针对抽象建造者编程
+                = new FastQuestionBuilderQuestion(questionId, questionName, questionPriority, userId,iterationId ,projectId);  // 针对抽象建造者编程
         BuilderController builderController = new BuilderController();
         
         return builderController.construct(builderQuestion);    // 通过指挥者创建完整的建造者对象

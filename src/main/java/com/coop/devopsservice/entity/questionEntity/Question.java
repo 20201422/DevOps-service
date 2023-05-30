@@ -21,14 +21,14 @@ public class Question {
     private String projectId;
     private String userId;
     private String epicId;
-    private String iterationId;
+    private int iterationId;
     
     public Question() {
     }
     
     public Question(int questionIndex, String questionId, String questionName, String questionDescribe,
                     String questionPriority, String questionState, String beginTime, String endTime,
-                    String projectId, String userId, String epicId, String iterationId) {
+                    String projectId, String userId, String epicId, int iterationId) {
         this.questionIndex = questionIndex;
         this.questionId = questionId;
         this.questionName = questionName;
@@ -131,11 +131,11 @@ public class Question {
         this.epicId = epicId;
     }
     
-    public String getIterationId() {
+    public int getIterationId() {
         return iterationId;
     }
     
-    public void setIterationId(String iterationId) {
+    public void setIterationId(int iterationId) {
         this.iterationId = iterationId;
     }
     

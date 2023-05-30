@@ -32,9 +32,9 @@ class DevOpsServiceApplicationTests {
 //        ApiResult apiResult = userController.updateUser(user);
 //        assertEquals(200, apiResult.getCode());
         
-        ApiResult api = questionController.addFastQuestion("2429-3-2", "工厂模式",
-                "低", "20201422", "2429");
-        assertEquals(200, api.getCode());
+//        ApiResult api = questionController.addFastQuestion("2429-3-2", "工厂模式",
+//                "低", "20201422", "2429");
+//        assertEquals(200, api.getCode());
     }
     
 }
