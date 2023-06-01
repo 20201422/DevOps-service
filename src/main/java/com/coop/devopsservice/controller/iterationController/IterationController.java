@@ -1,13 +1,10 @@
 package com.coop.devopsservice.controller.iterationController;
 
-import com.coop.devopsservice.designPattern.lrx_observerPattern.ConcreteIterationState;
-import com.coop.devopsservice.designPattern.lrx_observerPattern.IterationState;
 import com.coop.devopsservice.entity.ApiResult;
 import com.coop.devopsservice.entity.iterationEntity.Iteration;
 import com.coop.devopsservice.serviceImpl.IterationServiceImpl;
 import com.coop.devopsservice.serviceImpl.QuestionServiceImpl;
 import com.coop.devopsservice.util.ApiResultHandler;
-import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,10 +35,20 @@ public class IterationController {
         System.out.println("添加迭代");
         return ApiResultHandler.success(iterationService.addIteration(iteration));
     }
+    @PostMapping("/update")
+    public ApiResult<?> updateIteration(@RequestBody Iteration iteration){
+        System.out.println("更新迭代");
+        return ApiResultHandler.success(iterationService.updateIteration(iteration));
+    }
     @GetMapping("/{iterationId}")
     public ApiResult<?> findQuestionById(@PathVariable("iterationId") int iterationId) {  // 根据id查找迭代
         System.out.println("根据ID查找迭代");
         return ApiResultHandler.success(iterationService.findIterationById(iterationId));
+    }
+    @GetMapping("/del/{iterationId}")
+    public ApiResult<?> deleteById(@PathVariable("iterationId") int iterationId){
+        System.out.println("删除迭代");
+        return ApiResultHandler.success(iterationService.deleteIterationById(iterationId));
     }
     //将问题添加到迭代，即更新问题的iterationId
     @GetMapping("/addToIteration")

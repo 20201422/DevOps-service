@@ -9,9 +9,9 @@ public class Iteration {
     private String iterationState;
     private String startTime;
     private String endTime;
-    private int projectId;
+    private String projectId;
 
-    public Iteration(int iterationId, String iterationName, String iterationDescribe, String iterationState, String startTime, String endTime, int projectId) {
+    public Iteration(int iterationId, String iterationName, String iterationDescribe, String iterationState, String startTime, String endTime, String projectId) {
         this.iterationId = iterationId;
         this.iterationName = iterationName;
         this.iterationDescribe = iterationDescribe;
@@ -72,11 +72,11 @@ public class Iteration {
         this.endTime = endTime;
     }
 
-    public int getProjectId() {
+    public String getProjectId() {
         return projectId;
     }
 
-    public void setProjectId(int projectId) {
+    public void setProjectId(String projectId) {
         this.projectId = projectId;
     }
 }

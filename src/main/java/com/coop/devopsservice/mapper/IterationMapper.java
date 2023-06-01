@@ -20,10 +20,10 @@ public interface IterationMapper {
     @Delete("delete from iteration where iterationId = #{iterationId}")
     int deleteIterationById(int iterationId);  //根据id删除迭代
 
-    @Update("update iteration" +
-            "set iterationId = #{iterationId},iterationName = #{iterationName}," +
+    @Update("update iteration " +
+            "set iterationName = #{iterationName}," +
                 "iterationDescribe = #{iterationDescribe},iterationState = #{iterationState}," +
-                "startTime = #{startTime},endTime = #{endTime},projectId = #{projectId}")
+                "startTime = #{startTime},endTime = #{endTime},projectId = #{projectId} where iterationId = #{iterationId}")
     int updateIteration(Iteration iteration);   //更新迭代
 
     @Update("update question set iterationId = #{iterationId} where questionId = #{questionId}")
