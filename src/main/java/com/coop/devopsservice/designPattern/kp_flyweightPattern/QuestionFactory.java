@@ -45,8 +45,10 @@ public class QuestionFactory {
     
     //通过key来获取存储在Hashtable中的享元对象
     public static QuestionState getQuestionState(String key) {
-        if (hashtable.containsKey(key))
+
+        if (hashtable.containsKey(key)) {
             return (QuestionState) hashtable.get(key);
+        }
         else
             return null;
     }

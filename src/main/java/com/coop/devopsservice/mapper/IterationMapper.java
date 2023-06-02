@@ -42,4 +42,6 @@ public interface IterationMapper {
 
     @Select("SELECT COUNT(*) FROM iteration WHERE iterationState = '已开启' AND projectId = #{projectId}")
     int getOpenedCount(String projectId);
+    @Select("SELECT projectId FROM iteration WHERE iterationId = #{iterationId}")
+    String getProjectIdByIterationId(int iterationId);
 }

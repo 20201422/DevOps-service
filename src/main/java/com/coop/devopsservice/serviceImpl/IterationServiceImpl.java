@@ -79,8 +79,10 @@ public class IterationServiceImpl implements IterationService {
     @Override
     public int openIteration(int iterationId) {
         IterationState iterationState = new ConcreteIterationState(iterationId,iterationMapper);
+        //根据迭代id获取项目id，用来判断项目中开启的迭代数量
+        String projectId = iterationMapper.getProjectIdByIterationId(iterationId);
         //定义代理开启对象
-        ProxyOpenIteration proxyOpenIteration = new ProxyOpenIteration(iterationState,iterationMapper,"2427");
+        ProxyOpenIteration proxyOpenIteration = new ProxyOpenIteration(iterationState,iterationMapper,projectId);
         return proxyOpenIteration.open();
 
         //return iterationState.openIterationState();
