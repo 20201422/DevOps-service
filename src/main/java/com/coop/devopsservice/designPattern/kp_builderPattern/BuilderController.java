@@ -17,13 +17,13 @@ public class BuilderController {
     
     public Question construct(BuilderQuestion builderQuestion) {
         
-        builderQuestion.buildQuestionId();
-        builderQuestion.buildQuestionName();
-        builderQuestion.buildQuestionPriority();
-        builderQuestion.buildUserId();
-        builderQuestion.buildIterationId();
-        builderQuestion.buildProjectId();
-        builderQuestion.buildQuestionState();
+        builderQuestion.buildQuestionId();  // 建造问题id
+        builderQuestion.buildQuestionName();    // 建造问题名称
+        builderQuestion.buildQuestionPriority();    // 建造问题优先级
+        builderQuestion.buildUserId();  // 建造用户id
+        builderQuestion.buildIterationId(); // 建造迭代id
+        builderQuestion.buildProjectId();   // 建造项目id
+        builderQuestion.buildQuestionState();   // 建造问题状态
         
         return builderQuestion.createQuestion();
     }
