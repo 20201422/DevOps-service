@@ -166,13 +166,17 @@ public class QuestionController {
                                             @RequestParam("projectId") String projectId) { // 更新问题的状态
         System.out.println("更新问题的状态");
         Question question = questionService.findQuestionById(questionId, projectId);   // 找到问题
-        QuestionFactory questionFactory = QuestionFactory.getInstance();    // 获取享元工厂对象
-        question.setQuestionState(Objects.requireNonNull(QuestionFactory.getQuestionState(state)).getQuestionState());
-        questionService.updateQuestion(question);
-
-        updateEpicState(question.getEpicId(), projectId);  // 修改史诗状态
-
-        return ApiResultHandler.success();
+        if (!Objects.equals(question.getQuestionState(), state)) {
+            QuestionFactory questionFactory = QuestionFactory.getInstance();    // 获取享元工厂对象
+            question.setQuestionState(questionFactory.getQuestionState(state).getQuestionState());
+            questionService.updateQuestion(question);
+            
+            updateEpicState(question.getEpicId(), projectId);  // 修改史诗状态
+            
+            return ApiResultHandler.success();
+        }
+        
+        return null;
     }
 
     private void updateEpicState(String epicId, String projectId) {
